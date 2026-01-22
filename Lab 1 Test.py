@@ -4,5 +4,4 @@ cty_name = str(input('Enter City Name:'))
 prov_code = str(input('Enter Province Code:'))
 post_code = str(input('Enter Postal Code:'))
 cust_name = str(input('Enter Customer  Name:'))
-address = f'Ship to:\n{cust_name}\n{civ_num} {st_name}\n{cty_name}  {prov_code} {post_code}'
-print(address)
+print("Ship to:" + '\n' + cust_name + '\n' + str(civ_num) + ' ' + st_name + '\n' + cty_name + ',' + ' ' + prov_code + ' ' + post_code)
