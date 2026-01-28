@@ -1,5 +1,6 @@
 age = int(input('Enter Age:'))
 yrs_service = int(input('Enter years of service:'))
+print('Mana Corp. Retirement Eligibility Checker')
 print('Age: '+str(age))
 print('Years of Service: '+str(yrs_service))
 if age>50:
