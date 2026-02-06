@@ -7,10 +7,10 @@ print('T: Tea Boxes')
 selection = input('>>> ')
 coffeeammount=0
 teaboxammounnt=0
-if selection==('c' or 'C' or 't' or 'T'):
-    if selection=='C' or 'c':
+if selection=='c' or selection=='C' or selection=='t' or selection=='T':
+    if selection=='C' or selection=='c':
         input('Enter the number of kilograms (kg) of coffee: ')
-    elif selection=='T' or 't':
+    elif selection=='T' or selection=='t':
         input('Enter the number of tea boxes: ')
 else:
     print('Invalid input, you should enter c/C or t/T')
