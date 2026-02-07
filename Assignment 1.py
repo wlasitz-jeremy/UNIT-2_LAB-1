@@ -49,6 +49,8 @@ if province_abbreviation=='ab' or province_abbreviation=='Ab' or province_abbrev
         float(gst)==price_coffee*1.05 or float(gst)==price_tea*1.05
     if province_abbreviation=='on' or province_abbreviation=='On' or province_abbreviation=='ON':
         float(gst)==price_coffee*1.13 or float(gst)==price_tea*1.13
+    else:
+        float(gst)==price_coffee*1.15 or float(gst)==price_tea*1.15
 total_price_coffee=discount_price_coffee + gst
 total_price_tea=discount_price_tea + gst
 if selection=='c' or selection=='C':
