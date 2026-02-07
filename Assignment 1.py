@@ -34,6 +34,8 @@ float(coffee_amount)
 float(tea_box_amount)
 float(price_coffee)
 float(price_tea)
+float(discount_price_coffee)
+float(discount_price_tea)
 if float(coffee_amount)>25 or float(tea_box_amount)>10:
         if float(coffee_amount)>25:
            discount_price_coffee=price_coffee*0.90
@@ -42,8 +44,6 @@ if float(coffee_amount)>25 or float(tea_box_amount)>10:
 else:
     discount_price_coffee=price_coffee*1
     discount_price_tea=price_tea*1
-float(discount_price_coffee)
-float(discount_price_tea)
 if province_abbreviation=='ab' or province_abbreviation=='Ab' or province_abbreviation=='AB' or province_abbreviation=='bc' or province_abbreviation=='Bc' or province_abbreviation=='BC' or province_abbreviation=='mb' or province_abbreviation=='Mb' or province_abbreviation=='MB' or province_abbreviation=='nb' or province_abbreviation=='Nb' or province_abbreviation=='NB' or province_abbreviation=='nl' or province_abbreviation=='Nl' or province_abbreviation=='NL' or province_abbreviation=='ns' or province_abbreviation=='Ns' or province_abbreviation=='NS' or province_abbreviation=='on' or province_abbreviation=='On' or province_abbreviation=='ON' or province_abbreviation=='pe' or province_abbreviation=='Pe' or province_abbreviation=='PE' or province_abbreviation=='qc' or province_abbreviation=='Qc' or province_abbreviation=='QC' or province_abbreviation=='sk' or province_abbreviation=='Sk' or province_abbreviation=='SK' or province_abbreviation=='nt' or province_abbreviation=='Nt' or province_abbreviation=='NT' or province_abbreviation=='nu' or province_abbreviation=='Nu' or province_abbreviation=='NU' or province_abbreviation=='yt' or province_abbreviation=='Yt' or province_abbreviation=='YT':
     if province_abbreviation=='ab' or province_abbreviation=='Ab' or province_abbreviation=='AB' or province_abbreviation=='bc' or province_abbreviation=='Bc' or province_abbreviation=='BC':
         float(gst)==price_coffee*1.05 or float(gst)==price_tea*1.05
