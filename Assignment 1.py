@@ -1,10 +1,7 @@
-import sys
-from dbm.sqlite3 import error
-
 print('--------------------------------------------------')
-print('*** Welcome to the Berverage Wholesale Program ***')
+print('*** Welcome to the Beverage Wholesale Program ***')
 print('--------------------------------------------------')
-print('Please select type of purchace:')
+print('Please select type of purchase:')
 print('C: Coffee Beans')
 print('T: Tea Boxes')
 selection=input('>>> ')
