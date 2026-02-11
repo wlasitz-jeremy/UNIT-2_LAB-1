@@ -39,6 +39,7 @@ if selection=='c' or selection=='C' or selection=='t' or selection=='T':
 else:
     print('Invalid input, you should enter c/C or t/T')
     exit()
+tea_box_amount=tea_box_amount*20
 if province_abbreviation==province_abbreviation:
     if province_abbreviation=='ab' or province_abbreviation=='bc':
         gst=discount_price * 0.05
