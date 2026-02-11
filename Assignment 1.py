@@ -8,7 +8,7 @@ selection=input('>>> ')
 coffee_amount=0
 tea_box_amount=0
 discount_price=0
-province_abbreviation=0
+province_abbreviation=['ab','bc','mb','nb','nl','ns', 'on','pe','qc','sk','nt','nu','yt']
 gst=0
 province_abbreviation = str(province_abbreviation).upper()
 if selection=='c' or selection=='C' or selection=='t' or selection=='T':
@@ -39,7 +39,7 @@ if selection=='c' or selection=='C' or selection=='t' or selection=='T':
 else:
     print('Invalid input, you should enter c/C or t/T')
     exit()
-if province_abbreviation=='ab' or province_abbreviation=='bc' or province_abbreviation=='mb' or province_abbreviation=='nb' or province_abbreviation=='nl' or province_abbreviation=='ns' or province_abbreviation=='on' or province_abbreviation=='pe' or province_abbreviation=='qc' or province_abbreviation=='sk' or province_abbreviation=='nt' or province_abbreviation=='nu' or province_abbreviation=='yt':
+if province_abbreviation==province_abbreviation:
     if province_abbreviation=='ab' or province_abbreviation=='bc':
         gst=discount_price * 0.05
     elif province_abbreviation=='on':
@@ -56,3 +56,5 @@ if selection=='c' or selection=='C':
 else:
     print(f'{"Product"}{"Qty(Bags/kg)":>15}{"Price before Disc":>20}{"Price after Disc":>20}{"GST":>20}{"Total Price":>20}')
     print(f'{"Tea":>5}{tea_box_amount:>14.2f}{price:>10.2f}{discount_price:>10.2f}{gst:>10.2f}{total_price:>10.2f}')
+
+# ='ab' or province_abbreviation=='bc' or province_abbreviation=='mb' or province_abbreviation=='nb' or province_abbreviation=='nl' or province_abbreviation=='ns' or province_abbreviation=='on' or province_abbreviation=='pe' or province_abbreviation=='qc' or province_abbreviation=='sk' or province_abbreviation=='nt' or province_abbreviation=='nu' or province_abbreviation=='yt'
