@@ -8,6 +8,7 @@ selection=input('>>> ')
 coffee_amount=0
 tea_box_amount=0
 discount_price=0
+price=0
 province_abbreviation=['ab','bc','mb','nb','nl','ns', 'on','pe','qc','sk','nt','nu','yt']
 gst=0
 province_abbreviation = str(province_abbreviation).upper()
