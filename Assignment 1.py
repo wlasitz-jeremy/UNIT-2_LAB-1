@@ -57,5 +57,3 @@ if selection=='c' or selection=='C':
 else:
     print(f'{"Product"}{"Qty(Bags/kg)":>15}{"Price before Disc":>20}{"Price after Disc":>20}{"GST":>20}{"Total Price":>20}')
     print(f'{"Tea":>5}{tea_box_amount:>14.2f}{price:>10.2f}{discount_price:>10.2f}{gst:>10.2f}{total_price:>10.2f}')
-
-# ='ab' or province_abbreviation=='bc' or province_abbreviation=='mb' or province_abbreviation=='nb' or province_abbreviation=='nl' or province_abbreviation=='ns' or province_abbreviation=='on' or province_abbreviation=='pe' or province_abbreviation=='qc' or province_abbreviation=='sk' or province_abbreviation=='nt' or province_abbreviation=='nu' or province_abbreviation=='yt'
