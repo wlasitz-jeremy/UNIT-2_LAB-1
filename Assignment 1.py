@@ -1,9 +1,4 @@
-print('--------------------------------------------------')
-print('*** Welcome to the Beverage Wholesale Program ***')
-print('--------------------------------------------------')
-print('Please select type of purchase:')
-print('C: Coffee Beans')
-print('T: Tea Boxes')
+print(f'{'-'*47}\n{'*'*3}{"Welcome to the Beverage Wholesale Program"}{'*'*3}\n{'-'*47}\n{'Please select type of purchase:'}\n{'C: Coffee Beans'}\n{'T: Tea Boxes'}')
 selection=input('>>> ')
 coffee_amount=0
 tea_box_amount=0
@@ -53,8 +48,6 @@ else:
     exit()
 total_price=discount_price + gst
 if selection=='c' or selection=='C':
-    print(f'{"Product"}{"Qty(Bags/kg)":>15}{"Price before Disc":>20}{"Price after Disc":>20}{"GST":>20}{"Total Price":>20}')
-    print(f'{"Coffee":>5}{coffee_amount:>14.2f}{price:>10.2f}{discount_price:>10.2f}{gst:>10.2f}{total_price:>10.2f}')
+    print(f'{'-'*110}\n{"Product":>8}{"Qty(Bags/kg)":>16}{"Price before Disc":>22}{"Price after Disc":>24}{"GST":>14}{"Total Price":>21}\n{"Coffee":>8}{coffee_amount:>12.2f}{price:>20.2f}{discount_price:>25.2f}{gst:>20.2f}{total_price:>18.2f}\n{'-'*110}')
 else:
-    print(f'{"Product"}{"Qty(Bags/kg)":>15}{"Price before Disc":>20}{"Price after Disc":>20}{"GST":>20}{"Total Price":>20}')
-    print(f'{"Tea":>5}{tea_box_amount:>14.2f}{price:>10.2f}{discount_price:>10.2f}{gst:>10.2f}{total_price:>10.2f}')
+    print(f'{'-'*110}\n{"Product":>8}{"Qty(Bags/kg)":>16}{"Price before Disc":>22}{"Price after Disc":>24}{"GST":>14}{"Total Price":>21}\n{"Tea":>6}{tea_box_amount:14.2f}{price:>20.2f}{discount_price:>25.2f}{gst:>20.2f}{total_price:>18.2f}\n{'-'*110}')
