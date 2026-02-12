@@ -1,11 +1,3 @@
 st=('Tiffany','Kyle','Celeste','John')
 sc=('55','80.13','96','64.88')
-
-print(f'Student name: {st[0]}')
-print(f'Score: {sc[0]}')
-print(f'Student name: {st[1]}')
-print(f'Score: {sc[1]}')
-print(f'Student name: {st[2]}')
-print(f'Score: {sc[2]}')
-print(f'Student name: {st[3]}')
-print(f'Score: {sc[3]}')
+print(f'Student name: {st[0]}\nScore: {sc[0]}\nStudent name: {st[1]}\nScore: {sc[1]}\nStudent name: {st[2]}\nScore: {sc[2]}\nStudent name: {st[3]}\nScore: {sc[3]}')
