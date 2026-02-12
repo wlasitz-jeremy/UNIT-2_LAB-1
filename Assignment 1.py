@@ -1,4 +1,8 @@
-print(f'{'-'*47}\n{'*'*3}{"Welcome to the Beverage Wholesale Program"}{'*'*3}\n{'-'*47}\n{'Please select type of purchase:'}\n{'C: Coffee Beans'}\n{'T: Tea Boxes'}')
+print(f'{'-'*47}\n'
+      f'{'*'*3}{"Welcome to the Beverage Wholesale Program"}{'*'*3}\n'
+      f'{'-'*47}\n{'Please select type of purchase:'}\n'
+      f'{'C: Coffee Beans'}\n'
+      f'{'T: Tea Boxes'}')
 selection=input('>>> ')
 coffee_amount=0
 tea_box_amount=0
