@@ -52,7 +52,8 @@ else:
     exit()
 total_price=discount_price + gst
 if selection=='c' or selection=='C':
-    print(f'{'-'*110}\n{"Product":>8}{"Qty(Bags/kg)":>16}{"Price before Disc":>22}{"Price after Disc":>24}{"GST":>14}{"Total Price":>21}\n'
+    print(f'{'-'*110}\n'
+          f'{"Product":>8}{"Qty(Bags/kg)":>16}{"Price before Disc":>22}{"Price after Disc":>24}{"GST":>14}{"Total Price":>21}\n'
           f'{"Coffee":>8}{coffee_amount:>12.2f}{price:>20.2f}{discount_price:>25.2f}{gst:>20.2f}{total_price:>18.2f}\n'
           f'{'-'*110}')
 else:
