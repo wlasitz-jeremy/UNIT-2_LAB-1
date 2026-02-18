@@ -1,12 +1,14 @@
 students = {}
 name = []
 score = []
-while name != 'END':
+while True:
       name = input('Enter your name("END" to stop input): ')
+      if name == 'END':
+            break
 score = float(input('Enter your score: '))
 students[name]=score
-highest_score = students[max(students)]
 highest_name = max(students, key=students.get)
+highest_score = students[max(highest_name)]
 class_average = sum(students.values())/len(students)
 print(f'Class average score is {class_average:.1f}\n'
       f'Highest score is {highest_score:.1f} achieved by {highest_name}\n'
