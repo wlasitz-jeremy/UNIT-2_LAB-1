@@ -1,16 +1,18 @@
-names = []
+students = {}
+name = []
 score = []
-studentgrades = {}
-while names != 'END':
-      names = input('Enter your name("END" to stop input): ')
-      score = input('Enter your score: ')
-      for names, score in studentgrades:
-            studentgrades.append(({names:score}))
-print(f'Class average score is {sum(studentgrades.values())/len(studentgrades.values()):.f}\n'
-      f'Highest score is {max(studentgrades.values()):.f} achieved by {studentgrades.key()}\n'
+while True:
+      name = input('Enter your name("END" to stop input): ')
+      if name == 'END':
+            break
+      score = float(input('Enter your score: '))
+      students[name]=score
+highest_score = students[max(students)]
+highest_name = max(students, key=students.get)
+class_average = sum(students.values())/len(students)
+print(f'Class average score is {class_average:.1f}\n'
+      f'Highest score is {highest_score:.1f} achieved by {highest_name}\n'
       f'{"Student Name"} {"Grade":>21}\n'
-      f'{"-"*15}{"-"*5:>21}\n'
-      f'{names[0]}{score[0]:>21}\n'
-      f'{names[1]}{score[1]:>21}\n'
-      f'{names[2]}{score[2]:>21}\n'
-      f'{names[3]}{score[3]:>21}\n')
+      f'{"-"*15}{"-"*5:>21}\n')
+for name, score in students.items():
+      print(f'{name}{score:>21}\n')
