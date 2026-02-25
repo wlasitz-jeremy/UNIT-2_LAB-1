@@ -25,7 +25,6 @@
 #     '''sum of numbers'''
 #     total=int(value1)+int(value2)
 #     print(f"The sum of the numbers is: {total}")
-#
 # value1=input("Enter first number: ")
 # value2=input("Enter second number: ")
 # print(total.__doc__)
