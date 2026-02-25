@@ -18,8 +18,8 @@
 # display_books()
 # issue_books()
 # return_books()
-
-
+#
+#
 # def total(value1,value2):
 #     total=0
 #     '''sum of numbers'''
@@ -29,14 +29,16 @@
 # value2=input("Enter second number: ")
 # print(total.__doc__)
 # total(value1,value2)
+#
+#
+# def student(name,mark1,mark2,mark3):
+#     average_mark = 0
+#     average_mark = (mark1 + mark2 + mark3) / 3
+#     print(f"Your average mark is {average_mark}")
+# name = str(input("Enter your name: "))
+# mark1 = float(input("Enter your mark: "))
+# mark2 = float(input("Enter your mark: "))
+# mark3 = float(input("Enter your mark: "))
+# student(name,mark1,mark2,mark3)
 
 
-def student(name,mark1,mark2,mark3):
-    average_mark = 0
-    average_mark = (mark1 + mark2 + mark3) / 3
-    print(f"Your average mark is {average_mark}")
-name = str(input("Enter your name: "))
-mark1 = float(input("Enter your mark: "))
-mark2 = float(input("Enter your mark: "))
-mark3 = float(input("Enter your mark: "))
-student(name,mark1,mark2,mark3)
