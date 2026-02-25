@@ -10,14 +10,13 @@ def issue_books():
 def return_books():
     """ Function to return books """
     print("Thank-you for returning the books!")
-
-
 print(f"{show_welcome.__doc__}\n"
       f"{display_books.__doc__}\n"
       f"{issue_books.__doc__}\n"
       f"{return_books.__doc__}\n")
-
 show_welcome()
 display_books()
 issue_books()
 return_books()
+
+
