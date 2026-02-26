@@ -8,8 +8,8 @@ category = {'applephone', 120.45,
      'androidtablet', 65.73,
      'windowstablet', 51.49}
 while product_number !='0':
-    product_number = input('Enter product number 1-5, or enter 0 to stop: ')
-    quantity_sold = float(input('Enter quantity sold: '))
+    product_number = input('Enter product number 1-5, or enter 0 to stop:\n       ')
+    quantity_sold = float(input('Enter quantity sold:\n       '))
     if product_number == '0':
         break
 if product_number==product_number:
