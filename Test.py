@@ -1,3 +1,174 @@
+# current_price=float(input('Enter the current price '))
+# last_month_price=float(input('Enter the last months price '))
+# change_of_price=current_price-last_month_price
+# monthly_mortgage=float(current_price)*(0.051)/12
+# print(f'Current price is: {current_price}\nChange of price since last month is: {change_of_price}\nEstimated monthly mortage is: {monthly_mortgage}')
+
+
+
+
+# r = float(input('Enter radius '))
+# h = float(input('Enter height '))
+# pi=3.14
+# volume=str(pi*(r**2)*h)
+# area=str((2*pi)*h*r + pi*(r**2))
+# print("Area="+area+"\nVolume="+volume)
+
+
+
+
+# sd=float(input('Enter starting distance '))
+# ed=float(input('Enter stopping distance '))
+# st=float(input('Enter starting time '))
+# et=float(input('Enter stopping time '))
+# d=ed-sd
+# t=et-st
+# v1=sd/st
+# v2=ed/et
+# cv=float(v2)-float(v1)
+# a=float(cv)/float(t)
+# print(f'"Velocity="{v2}m/s\nAccelleration="{a}m/s**2')
+
+
+
+
+# num = float(input('Enter a number'))
+# if num % 2 == 0:
+#     print(str(num) + ' is even')
+#     print(str(num) + ' is absolute')
+# else:
+#     print(str(num) + " is odd")
+#     print(str(num) + ' is not absolute')
+
+
+
+
+# grd = int(input('Enter grade point'))
+# if grd>90 and grd<=100:
+#     print(f'A+')
+# elif grd>85 and grd<=89:
+#     print(f'A')
+# elif grd>80 and grd<=84:
+#     print(f'A-')
+# elif grd>77 and grd<=79:
+#     print(f'B+')
+# elif grd>73 and grd<=76:
+#     print(f'B')
+# elif 70<grd<72:
+#     print(f'B-')
+# elif grd>67 and grd<=69:
+#     print(f'C+')
+# elif grd>63 and grd<=66:
+#     print(f'C')
+# elif grd>60 and grd<=62:
+#     print(f'C-')
+# elif grd>55 and grd<=59:
+#     print(f'D+')
+# elif grd>50 and grd<=54:
+#     print(f'D')
+# else:
+#     print(f'F')
+
+
+
+
+# yr = int(input('Enter year: '))
+# if yr%4==0:
+#     if yr%100==0 or yr%400==0:
+#         print(f'{yr} is not a leap year')
+#     else:
+#         print(f'{yr} is a leap year')
+# else:
+#     print(f'{yr} is not a leap year')
+
+
+
+
+# course = 'Python'
+# print(f'{course:>20}')
+# print(f'{course:<20}')
+# print(f'{course:20}')
+# print(f'{"Centered":^20}\n')
+# cadtd= 1.2798
+# usdtd= 0.940
+# cadytd= 2.7843
+# usdytd= 2.050
+# changeusd= (usdtd-usdytd)
+# changecad= (cadtd-cadytd)
+# print(f'{"Date":^10}{"Rate":^20}')
+# print(f'Cad Yesterday{cadytd:^17.4f}')
+# print(f'Cad Today{cadtd:^24.4f}')
+# print(f'Cad Change{changecad:^22.4f}')
+# print(f'Usd Yesterday{usdytd:^16.4f}')
+# print(f'Usd Today{cadtd:^24.4f}')
+# print(f'Usd Change{changeusd:^22.4f}')
+# num=2
+# while num<=512:
+#     print(num)
+#     num+=2
+
+
+
+
+# kpm=1.61
+# print(f'{"MPH"}',f'{"KPH":>10}')
+# print('==========',"==========")
+# for mph in range(10,80,10):
+#     kph=mph*kpm
+#     print(f'{mph:10d}{kph:>10.0f}')
+# for i in range (1,3):
+#     for j in range (1,3):
+#         print(f'{i}*{j}=',i*j)
+
+
+
+
+# RC='Rock Climbing'
+# print(RC[5:10])
+# for height in range(0,len(RC)):
+#     print(RC[height-8])
+# height=0
+# while height<len(RC):
+#     print(RC[height])
+#     height+=2
+# print(RC.upper())
+# print(RC.lower())
+# course=input("Enter course name: ")
+# alpha=0
+# beta=0
+# charlie=0
+# for charlie in course:
+#     if course.isalpha():
+#         alpha+=1
+#     else:
+#         if course.isalnum():
+#             beta+=1
+# print(alpha,beta)
+
+
+
+
+# names=('Joe', 'Ed', 'Fred')
+# num=len(names)
+# print(num)
+# first=min(names)
+# print(first)
+# print(max(names))
+# del names
+
+
+
+
+# days=('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+# print(days)
+# weekdays=(f'Weekdays:{days[1:5]}')
+# print(weekdays)
+# weekends=(f'Weekends:{days[0]} {days[6]}')
+# print(weekends)
+
+
+
+
 # def show_welcome():
 #     """ Function to show welcome message """
 #     print("Hello to the library!")
@@ -20,6 +191,8 @@
 # return_books()
 
 
+
+
 # def total(value1,value2):
 #     total=0
 #     '''sum of numbers'''
@@ -29,6 +202,8 @@
 # value2=input("Enter second number: ")
 # print(total.__doc__)
 # total(value1,value2)
+
+
 
 
 # def student(name,mark1,mark2,mark3):
@@ -42,6 +217,8 @@
 # student(name,mark1,mark2,mark3)
 
 
+
+
 def celsius_to_fahrenheit():
     c = float(input(f"Input your tempurature in celsius: "))
     f = (9/5)*c+32
@@ -52,5 +229,7 @@ def fahrenheit_to_celsius():
     print(f"Your tempurature in celsius is {c:.1f}")
 celsius_to_fahrenheit()
 fahrenheit_to_celsius()
+
+
 
 
