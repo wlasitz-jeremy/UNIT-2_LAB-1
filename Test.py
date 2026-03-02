@@ -220,13 +220,13 @@
 
 
 # def celsius_to_fahrenheit():
-#     c = float(input(f"Input your tempurature in celsius: "))
+#     c = float(input(f"Input your temperature in Celsius: "))
 #     f = (9/5)*c+32
-#     print(f"Your tempurature in fahrenheit is {f:.1f}")
+#     print(f"Your temperature in Fahrenheit is {f:.1f}")
 # def fahrenheit_to_celsius():
-#     f = float(input(f"Input your tempurature in fahrenheit: "))
+#     f = float(input(f"Input your temperature in Fahrenheit: "))
 #     c = (f-32)*(5/9)
-#     print(f"Your tempurature in celsius is {c:.1f}")
+#     print(f"Your temperature in Celsius is {c:.1f}")
 # celsius_to_fahrenheit()
 # fahrenheit_to_celsius()
 
