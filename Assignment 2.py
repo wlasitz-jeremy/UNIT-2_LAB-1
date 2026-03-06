@@ -1,26 +1,27 @@
 print(f"Welcome to Circle Phones' Profit Calculator.")
 total_profit = 0.0
+quantity_sold = 0.0
 category = {
-    1: ('applephone', 120.45,),
-    2: ('androidphone', 99.50,),
-    3: ('appletablet', 75.69,),
-    4: ('androidtablet', 65.73,),
-    5: ('windowstablet', 51.49)
-    }
+    1:120.45,
+    2:99.50,
+    3:75.69,
+    4:65.73,
+    5:51.49
+}
+p_n = {}
 while True:
-    product_number = input('Enter product number 1-5, or enter 0 to stop:\n       ').strip()
-    if product_number =='0':
+    product_number = int(input('Enter product number 1-5, or enter 0 to stop:\n       ').strip())
+    if product_number == 0.0:
         break
+# Need to add something to store product number in... Dictionary??
     if product_number in category:
-        continue
+        quantity_sold = int(input('Enter quantity sold:\n       ').strip())
+        if quantity_sold < 0.0:
+            print('Quantity sold must be greater than 0')
+        else:
+            print('Invalid input, please enter 0 or more')
     else:
         print('Invalid input, please enter a valid number')
-    product_number = int(product_number)
-    quantity_sold = input('Enter quantity sold:\n       ').strip()
-    if not quantity_sold.isdigit():
-        print('Invalid input, please enter 0 or more')
-        continue
-    quantity_sold = int(quantity_sold)
-    if quantity_sold < 0:
-        print('Quantity sold must be greater than 0')
-        continue
+# Need to merge DICT p_n with product number??
+total_profit = quantity_sold * category[product_number]
+print(f"Your total profit for today is {total_profit}")
