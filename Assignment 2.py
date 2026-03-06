@@ -16,12 +16,11 @@ while True:
 # Need to add something to store product number in... Dictionary??
     if product_number in category:
         quantity_sold = int(input('Enter quantity sold:\n       ').strip())
-        if quantity_sold < 0.0:
+        if quantity_sold < 0:
             print('Quantity sold must be greater than 0')
         else:
-            print('Invalid input, please enter 0 or more')
+            total_profit = quantity_sold * category[product_number]
     else:
         print('Invalid input, please enter a valid number')
 # Need to merge DICT p_n with product number??
-total_profit = quantity_sold * category[product_number]
 print(f"Your total profit for today is {total_profit}")

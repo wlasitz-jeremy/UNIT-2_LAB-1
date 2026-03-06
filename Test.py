@@ -249,3 +249,8 @@
 
 
 
+quantity_sold = int(input("Please enter the quantity sold:\n       ").strip())
+if quantity_sold < 0:
+    print("Sorry, you can't solve for negative quantity")
+else:
+    print(f"You sold {quantity_sold}")
