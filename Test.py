@@ -257,4 +257,15 @@
 
 
 
-    
+testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='w')
+lines = "Hello World\n","This is pretty cool\n","I kinda love coding!"
+testfile.writelines(lines)
+testfile.close()
+testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='r')
+content = testfile.read()
+print(content)
+testfile.close()
+
+
+
+
