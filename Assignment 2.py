@@ -23,4 +23,4 @@ while True:
     else:
         print('Invalid input, please enter a valid number')
 # Need to merge DICT p_n with product number??
-print(f"Your total profit for today is {total_profit}")
+print(f"Your total profit for today is: {total_profit:.2f}")
