@@ -257,14 +257,21 @@
 
 
 
-testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='w')
-lines = "Hello World\n","This is pretty cool\n","I kinda love coding!"
-testfile.writelines(lines)
-testfile.close()
-testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='r')
-content = testfile.read()
-print(content)
-testfile.close()
+# testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='w')
+# line = "Hello World\n","This is pretty cool\n","I kinda love coding!"
+# testfile.writelines(line)
+# testfile.close()
+# testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='r')
+# content = testfile.read()
+# print(content)
+# testfile.close()
+# file = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', 'r')
+# line = file.readline()
+# while line != '':
+#     line = line.strip()
+#     print(line)
+#     line = file.readline()
+# file.close()
 
 
 
