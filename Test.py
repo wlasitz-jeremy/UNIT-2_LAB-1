@@ -233,3 +233,19 @@
 
 
 
+# category = {
+#     1: 120.45,
+#     2: 99.50,
+#     3: 75.69,
+#     4: 65.73,
+#     5: 51.49
+# }
+# product_number = int(input('Enter product number:\n       ').strip())
+# if product_number in category:
+#     print(category[product_number])
+# else:
+#     print('Try Again')
+
+
+
+
