@@ -1,6 +1,7 @@
 print(f"Welcome to Circle Phones' Profit Calculator.")
 total_profit = 0.0
 quantity_sold = 0.0
+product_number = 0.0
 category = {
     1:120.45,
     2:99.50,
