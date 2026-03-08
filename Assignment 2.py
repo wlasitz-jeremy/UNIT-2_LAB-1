@@ -10,6 +10,7 @@ category = {
     5:51.49
 }
 p_n = {}
+q_s = {}
 while True:
     product_number = int(input('Enter product number 1-5, or enter 0 to stop:\n       ').strip())
     if product_number == 0.0:
