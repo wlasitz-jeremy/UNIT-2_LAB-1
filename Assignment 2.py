@@ -9,20 +9,22 @@ category = {
     4:65.73,
     5:51.49
 }
-p_n = {}
-q_s = {}
+p_n = []
+q_s = []
 while True:
     product_number = int(input('Enter product number 1-5, or enter 0 to stop:\n       ').strip())
+    p_n.append([product_number])
     if product_number == 0.0:
         break
-# Need to add something to store product number in... Dictionary??
     if product_number in category:
         quantity_sold = int(input('Enter quantity sold:\n       ').strip())
+        q_s.append([quantity_sold])
         if quantity_sold < 0:
             print('Quantity sold must be greater than 0')
         else:
+
+
             total_profit = quantity_sold * category[product_number]
     else:
         print('Invalid input, please enter a valid number')
-# Need to merge DICT p_n with product number??
 print(f"Your total profit for today is: {total_profit:.2f}")
