@@ -12,7 +12,7 @@ category = {
 p_n = []
 q_s = []
 def t_p():
-    """Calculates the total profit for the given product number."""
+    """Calculates the total profit for the given profit"""
 
 
 
