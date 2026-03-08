@@ -11,6 +11,13 @@ category = {
 }
 p_n = []
 q_s = []
+def t_p():
+    """Calculates the total profit for the given product number."""
+
+
+
+
+
 while True:
     product_number = int(input('Enter product number 1-5, or enter 0 to stop:\n       ').strip())
     p_n.append([product_number])
@@ -22,8 +29,6 @@ while True:
         if quantity_sold < 0:
             print('Quantity sold must be greater than 0')
         else:
-
-
             total_profit = quantity_sold * category[product_number]
     else:
         print('Invalid input, please enter a valid number')
