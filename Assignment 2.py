@@ -13,7 +13,6 @@ while True:
         quantity_sold = int(input('Enter quantity sold:\n       ').strip())
         if quantity_sold < 0:
             print('Quantity sold must be greater than 0')
-            continue
         total_profit += quantity_sold * category[product_number]
     else:
         print('Invalid input, please enter a valid number')
