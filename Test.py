@@ -276,3 +276,52 @@
 
 
 
+# CPRG 216 - Part 1: Daily Profit Calculator
+
+# Initialize variables
+total_profit = 0.0
+has_sales = False
+
+# Welcome Message
+print("Welcome to Circle Phones' Profit calculator.")
+
+# Enter product number
+category = int(input("Enter product number 1-5, or enter 0 to stop:\n"))
+
+# Loop until category=0
+while category != 0:
+    # category >=1 and <=5?
+    if category >= 1 and category <= 5:
+        # Enter Qty Sold
+        quantity = int(input("Enter quantity sold:\n"))
+
+        # category=1? 2? 3? 4? else 5
+        if category == 1:
+            profit = quantity * 120.45
+        elif category == 2:
+            profit = quantity * 99.50
+        elif category == 3:
+            profit = quantity * 75.69
+        elif category == 4:
+            profit = quantity * 65.73
+        else:
+            profit = quantity * 51.49
+
+        # totalprofit=totalprofit+profit
+        total_profit = total_profit + profit
+
+        # has sales = true
+        has_sales = True
+    else:
+        # Invalid Category
+        print("Invalid input, please enter a valid number")
+
+    # Loop back to Enter product number
+    category = int(input("Enter product number 1-5, or enter 0 to stop:\n"))
+
+# category=0: has sales =true?
+if has_sales:
+    # Total profit for the day = totalprofit
+    print(f"Your total profit for today is: {total_profit:.2f}")
+
+# End
