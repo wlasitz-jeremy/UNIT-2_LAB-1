@@ -5,6 +5,7 @@ category = {1:120.45,
             3:75.69,
             4:65.73,
             5:51.49}
+time_period = 1, 2, 3, 4
 while True:
     product_number = int(input('Enter product number 1-5, or enter 0 to stop:\n       ').strip())
     if product_number == 0:
