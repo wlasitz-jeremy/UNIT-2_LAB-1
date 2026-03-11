@@ -21,13 +21,6 @@
 
 
 
-
-
-
-
-
-
-
 # CPRG 216 - Profit Calculator
 
 # Welcome Message

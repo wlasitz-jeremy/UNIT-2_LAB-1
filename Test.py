@@ -295,12 +295,23 @@
 
 
 import os
-file = open(r'C://SAIT//Object Oriented Programming 1 CPRG-216//ASSINGMENTS + LABS//en_climate_daily_AB_3036652_1990_P1D.csv', mode='r')
+file = open(r'C://SAIT//Object Oriented Programming 1 CPRG-216//ASSIGNMENTS + LABS//en_climate_daily_AB_3036652_1990_P1D.csv', mode='r')
 header = file.readline()
-totalmaxtemp = 0
+totalmaxtemp = 0.0
 numbertemp = 0
 content = file.readline()
 while content != "":
-    if  content.strip() == "":
-        continue
-    lines = content.rstrip().split(",")
+    content = content.strip()
+    if content != "":
+        items = content.split(",")
+        year = items[5]
+        month = items[6]
+        day = items[7]
+        time = items[8]
+        maxtemp = items[10]
+        totalmaxtemp += float(maxtemp)
+        numbertemp += 1
+    content = file.readline()
+file.close()
+print(totalmaxtemp / numbertemp)
+
