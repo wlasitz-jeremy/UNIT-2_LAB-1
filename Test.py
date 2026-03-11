@@ -276,3 +276,21 @@
 
 
 
+# import os
+# cwd = os.getcwd()
+# print(cwd)
+# file_path = os.path.join(cwd, "example.txt")
+# print(file_path)
+# exists = os.path.exists(file_path)
+# print(exists)
+# os.mkdir('my_directory')
+# import os
+# file_name = input("Enter file name: ")
+# if os.path.exists(file_name):
+#     print("The file Exists")
+# else:
+#     print("The file does not exist")
+
+
+
+
