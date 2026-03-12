@@ -296,14 +296,14 @@
 
 import os
 file = open(r'C://SAIT//Object Oriented Programming 1 CPRG-216//ASSIGNMENTS + LABS//en_climate_daily_AB_3036652_1990_P1D.csv', mode='r')
-file.readline()
+file.read()
 totalmaxtemp = 0
 numbertemp = 0
-content = file.readline()
+content = file
 while content != "":
-    content = content.strip()
+    content = content.rstrip()
     if content != "":
-        items = content.rstrip().split(",")
+        items = content.split(",")
         maxtemp = items[10]
         if maxtemp.strip().isdigit():
             content = file.readline()
