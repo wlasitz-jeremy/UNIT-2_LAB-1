@@ -296,22 +296,21 @@
 
 import os
 file = open(r'C://SAIT//Object Oriented Programming 1 CPRG-216//ASSIGNMENTS + LABS//en_climate_daily_AB_3036652_1990_P1D.csv', mode='r')
-header = file.readline()
+file.readline()
 totalmaxtemp = 0
 numbertemp = 0
 content = file.readline()
 while content != "":
     content = content.strip()
     if content != "":
-        items = content.split(",")
-        # year = items[5]
-        # month = items[6]
-        # day = items[7]
-        # time = items[8]
+        items = content.rstrip().split(",")
+        year = items[5]
+        month = items[6]
+        day = items[7]
+        time = items[8]
         maxstring = items[10]
-        if maxstring.strip() == "" or maxstring.strip() == '""' or maxstring.strip() == "NA":
+        if maxstring.strip() == "":
             content = file.readline()
-            continue
         maxtemp = maxstring.strip()
         maxtemp = float(maxtemp)
         totalmaxtemp += maxtemp
