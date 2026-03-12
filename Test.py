@@ -303,18 +303,16 @@ content = file.readline()
 while content != "":
     content = content.strip()
     if content != "":
-        items = content.rstrip().split(",")
-        year = items[5]
-        month = items[6]
-        day = items[7]
-        time = items[8]
+        items = content.strip().split(",")
         maxstring = items[10]
-        if maxstring.strip() == "":
+        if maxstring.strip().isdigit():
             content = file.readline()
-        maxtemp = maxstring.strip()
-        maxtemp = float(maxtemp)
-        totalmaxtemp += maxtemp
-        numbertemp += 1
-        content = file.readline()
+            maxtemp = maxstring.strip()
+            maxtemp = float(maxtemp)
+            totalmaxtemp += maxtemp
+            numbertemp += 1
+        else:
+            pass
+
 file.close()
 print(totalmaxtemp / numbertemp)
