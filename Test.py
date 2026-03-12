@@ -301,9 +301,8 @@ totalmaxtemp = 0
 numbertemp = 0
 content = file
 while content != "":
-    content = content.rstrip()
     if content != "":
-        items = content.split(",")
+        items = content.rstrip().split(",")
         maxtemp = items[10]
         if maxtemp.strip().isdigit():
             content = file.readline()
