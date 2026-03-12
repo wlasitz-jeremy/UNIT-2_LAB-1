@@ -303,11 +303,10 @@ content = file.readline()
 while content != "":
     content = content.strip()
     if content != "":
-        items = content.strip().split(",")
-        maxstring = items[10]
-        if maxstring.strip().isdigit():
+        items = content.rstrip().split(",")
+        maxtemp = items[10]
+        if maxtemp.strip().isdigit():
             content = file.readline()
-            maxtemp = maxstring.strip()
             maxtemp = float(maxtemp)
             totalmaxtemp += maxtemp
             numbertemp += 1
