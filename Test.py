@@ -294,15 +294,14 @@
 
 
 
-import os
-file = open(r'C://SAIT//Object Oriented Programming 1 CPRG-216//ASSIGNMENTS + LABS//en_climate_daily_AB_3036652_1990_P1D.csv', mode='r')
+file = open('temp_file.csv', 'r')
 file.readline()
 totalmaxtemp = 0
 numbertemp = 0
 content = file.readline()
 while content != "":
     items = content.rstrip().split(",")
-    maxstring = items[10]
+    maxstring = items[9]
     if maxstring != "":
         maxtemp = float(maxstring)
         totalmaxtemp += maxtemp
@@ -310,4 +309,4 @@ while content != "":
         content = file.readline()
 file.close()
 average_temp = totalmaxtemp / numbertemp
-print(f"{average_temp}")
+print(f"{average_temp:.2f}")
