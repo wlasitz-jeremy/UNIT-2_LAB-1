@@ -294,19 +294,24 @@
 
 
 
-file = open('temp_file.csv', 'r')
-file.readline()
-totalmaxtemp = 0
-numbertemp = 0
-content = file.readline()
-while content != "":
-    items = content.rstrip().split(",")
-    maxstring = items[9]
-    if maxstring != "":
-        maxtemp = float(maxstring)
-        totalmaxtemp += maxtemp
-        numbertemp += 1
-        content = file.readline()
-file.close()
-average_temp = totalmaxtemp / numbertemp
-print(f"{average_temp:.2f}")
+# file = open('temp_file.csv', 'r')
+# file.readline()
+# totalmaxtemp = 0
+# numbertemp = 0
+# content = file.readline()
+# while content != "":
+#     items = content.rstrip().split(",")
+#     maxstring = items[9]
+#     if maxstring != "":
+#         maxtemp = float(maxstring)
+#         totalmaxtemp += maxtemp
+#         numbertemp += 1
+#         content = file.readline()
+# file.close()
+# average_temp = totalmaxtemp / numbertemp
+# print(f"{average_temp:.2f}")
+
+
+
+
+
