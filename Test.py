@@ -314,4 +314,28 @@
 
 
 
+# def countdown(n):
+#     n -= 1
+#     if n == 0:
+#         print(n)
+#     else:
+#         countdown(n)
+# n = int(input("Please enter a number: "))
+# countdown(n)
 
+
+
+
+
+
+# def gcd(x, y):
+#     if y == 0:
+#         return x
+#     else:
+#         return gcd(y, x % y)
+#
+# n1 = int(input("Enter first positive number: "))
+# n2 = int(input("Enter second positive number: "))
+#
+# result = gcd(n1, n2)
+# print(f"The GCD is {result}")
