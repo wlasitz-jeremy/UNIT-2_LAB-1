@@ -1,4 +1,4 @@
-Flight Number,Passenger Name,Source,Destination,Available Seats,Price
-195,John Smith,Calgary,Toronto,67,725.00
-235,Casey Jones,Calgary,Cancun,20,1294.00
-485,Daniel Johnson,Vancouver,Edmonton,109,863.00
+Flight Number,Source,Destination,Available Seats,Price
+195,Calgary,Toronto,67,725.00
+235,Calgary,Cancun,20,1294.00
+485,Vancouver,Edmonton,109,863.00
