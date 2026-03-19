@@ -1,7 +1,7 @@
 def view_flights():
     file = open('flights.csv', 'r')
     content = file.readline()
-    while content != '':
+    while content != "":
         content = content.strip().split(",")
         print(content)
         content = file.readline()
@@ -21,22 +21,22 @@ def main():
 main()
 choice = input("Enter number between 1 and 4: ")
 
-if choice == 1:
+if choice == '1':
     view_flights()
 
 
 
-# elif choice == 2:
+# elif choice == '2':
 #     file = open('flights.csv', 'a')
 #
 #
 #
-# elif choice == 3:
+# elif choice == '3':
 #     file = open('flights.csv', 'r')
 #
 #
 #
-# elif choice == 4:
+# elif choice == '4':
 #     file = open('flights.csv', 'a')
 #
 #
