@@ -7,6 +7,45 @@ def view_flights():
         content = file.readline()
     file.close()
 
+
+
+def book_flights():
+    file = open('flights.csv', 'r')
+    content = file.readlines()
+    file.close()
+    flight_number = input("Enter flight number:\n")
+    found = False
+    index = 0
+    while index < len(content):
+        items = content[index].strip().split(",")
+        if flight_number == items[0]:
+            found = True
+            available_seats = int(items[3])
+            seats_requested  = int(input("Enter number of seats you want to book:\n"))
+            if seats_requested <= available_seats:
+                items[3] = str(available_seats - seats_requested)
+                content[index] = ",".join(items) + "\n"
+                print("Booking Successful!")
+            else:
+                print("Sorry, there are no available seats!")
+            break
+        index += 1
+    else:
+        print("Flight not found")
+    save_flights("flights.csv", content)
+
+
+
+def save_flights(file, flights):
+    file = open('flights.csv', 'w')
+    index = 0
+    while index < len(flights):
+        file.write(flights[index])
+        index += 1
+    file.close()
+
+
+
 def main():
 
     print("Welcome to the Flight Viewer\n"
@@ -17,46 +56,23 @@ def main():
         "5. Exit"
         )
 main()
-choice = input("Enter number between 1 and 4: ")
+choice = input("Enter number between 1 and 4:\n")
 
 if choice == '1':
     view_flights()
 
-
-
 elif choice == '2':
-    file = open('flights.csv', 'a')
-
-
+    book_flights()
 
 elif choice == '3':
-    file = open('flights.csv', 'r')
+    pass
 
 
 
 elif choice == '4':
-    file = open('flights.csv', 'a')
+    pass
 
 
 
 else:
     exit()
-
-
-
-# file = open('temp_file.csv', 'r')
-# file.readline()
-# totalmaxtemp = 0
-# numbertemp = 0
-# content = file.readline()
-# while content != "":
-#     items = content.rstrip().split(",")
-#     maxstring = items[9]
-#     if maxstring != "":
-#         maxtemp = float(maxstring)
-#         totalmaxtemp += maxtemp
-#         numbertemp += 1
-#         content = file.readline()
-# file.close()
-# average_temp = totalmaxtemp / numbertemp
-# print(f"{average_temp:.2f}")
