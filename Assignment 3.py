@@ -8,8 +8,9 @@ def view_flights():
     file.close()
 
 
-
-def book_flights():
+bookings = []
+flights = []
+def book_flights(flights, bookings):
     file = open('flights.csv', 'r')
     content = file.readlines()
     file.close()
@@ -25,6 +26,9 @@ def book_flights():
             if seats_requested <= available_seats:
                 items[3] = str(available_seats - seats_requested)
                 content[index] = ",".join(items) + "\n"
+                name = input("Enter passenger name:\n")
+                booking_string = name + "," + flight_number + "," + str(seats_requested)
+                bookings.append(booking_string)
                 print("Booking Successful!")
             else:
                 print("Sorry, there are no available seats!")
@@ -62,7 +66,7 @@ if choice == '1':
     view_flights()
 
 elif choice == '2':
-    book_flights()
+    book_flights(flights, bookings)
 
 elif choice == '3':
     pass
