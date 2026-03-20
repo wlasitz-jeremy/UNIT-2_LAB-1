@@ -3,11 +3,9 @@ def view_flights():
     content = file.readline()
     while content != "":
         content = content.strip().split(",")
-        print(content)
+        print("{:<15} {:<12} {:<15} {:<17} {:<10}".format(content[0], content[1], content[2], content[3], content[4]))
         content = file.readline()
     file.close()
-
-
 
 def main():
 
