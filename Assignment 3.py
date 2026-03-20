@@ -26,26 +26,26 @@ if choice == '1':
 
 
 
-# elif choice == '2':
-#     file = open('flights.csv', 'a')
-#
-#
-#
-# elif choice == '3':
-#     file = open('flights.csv', 'r')
-#
-#
-#
-# elif choice == '4':
-#     file = open('flights.csv', 'a')
-#
-#
-#
-# else:
-#     exit()
-#
-#
-#
+elif choice == '2':
+    file = open('flights.csv', 'a')
+
+
+
+elif choice == '3':
+    file = open('flights.csv', 'r')
+
+
+
+elif choice == '4':
+    file = open('flights.csv', 'a')
+
+
+
+else:
+    exit()
+
+
+
 # file = open('temp_file.csv', 'r')
 # file.readline()
 # totalmaxtemp = 0
