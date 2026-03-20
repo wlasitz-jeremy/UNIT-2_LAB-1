@@ -257,25 +257,25 @@
 
 
 
-testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='w')
-line = "Hello World\n","This is pretty cool\n","I kinda love coding!"
-testfile.writelines(line)
-testfile.close()
-testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='r')
-content = testfile.read()
-print(content)
-testfile.close()
-
-
-
-
-file = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', 'r')
-line = file.readline()
-while line != '':
-    line = line.strip()
-    print(line)
-    line = file.readline()
-file.close()
+# testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='w')
+# line = "Hello World\n","This is pretty cool\n","I kinda love coding!"
+# testfile.writelines(line)
+# testfile.close()
+# testfile = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', mode='r')
+# content = testfile.read()
+# print(content)
+# testfile.close()
+#
+#
+#
+#
+# file = open('C://SAIT//Object Oriented Programming 1 CPRG-216//testfile.txt', 'r')
+# line = file.readline()
+# while line != '':
+#     line = line.strip()
+#     print(line)
+#     line = file.readline()
+# file.close()
 
 
 
@@ -330,8 +330,6 @@ file.close()
 
 
 
-
-
 # def gcd(x, y):
 #     if y == 0:
 #         return x
@@ -343,3 +341,28 @@ file.close()
 #
 # result = gcd(n1, n2)
 # print(f"The GCD is {result}")
+
+
+
+
+class Human:
+    def __init__(self, name, age, email):
+        self.name = name
+        self.age = age
+        self.email = email
+    def get_name(self):
+        return self.name
+    def get_age(self):
+        return self.age
+    def get_email(self):
+        return self.email
+    def print_info(self):
+        print(f"Name = {jeremy.name}\nAge = {jeremy.age}\nEmail = {jeremy.email}")
+
+jeremy = Human("Jeremy Wlasitz", 21, "jeremy.wlasitz@edu.sait.ca")
+
+print(f"{jeremy.get_name()}\n"
+      f"{jeremy.get_age()}\n"
+      f"{jeremy.get_email()}\n")
+
+print(jeremy.print_info())
