@@ -368,24 +368,24 @@
 
 
 
-class Rectangle:
-    def __init__(self, width, length):
-        self.width = width
-        self.length = length
-    def get_width(self):
-        return self.width
-    def get_length(self):
-        return self.length
-    def set_width(self, new_width):
-        self.width = new_width
-    def set_length(self, new_length):
-        self.length = new_length
-    def perimeter(self):
-        return int(self.width) * 2 + int(self.length) * 2
-    def area(self):
-        return int(self.width) * int(self.length)
-width = input("Enter the width:\n")
-length = input("Enter the height:\n")
-x = Rectangle(width, length)
-print(x.perimeter())
-print(x.area())
+# class Rectangle:
+#     def __init__(self, width, length):
+#         self.width = width
+#         self.length = length
+#     def get_width(self):
+#         return self.width
+#     def get_length(self):
+#         return self.length
+#     def set_width(self, new_width):
+#         self.width = new_width
+#     def set_length(self, new_length):
+#         self.length = new_length
+#     def perimeter(self):
+#         return int(self.width) * 2 + int(self.length) * 2
+#     def area(self):
+#         return int(self.width) * int(self.length)
+# width = input("Enter the width:\n")
+# length = input("Enter the height:\n")
+# x = Rectangle(width, length)
+# print(x.perimeter())
+# print(x.area())
