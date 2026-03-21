@@ -1,3 +1,8 @@
+bookings = []
+flights = []
+
+
+
 def view_flights():
     file = open('flights.csv', 'r')
     content = file.readline()
@@ -8,8 +13,7 @@ def view_flights():
     file.close()
 
 
-bookings = []
-flights = []
+
 def book_flights(flights, bookings):
     file = open('flights.csv', 'r')
     content = file.readlines()
