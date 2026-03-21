@@ -117,8 +117,10 @@ def main():
         "2. Book Flights\n"
         "3. View Bookings\n"
         "4. Cancel Bookings\n"
-        "5. Exit"
-        )
+        "5. Exit")
+
+
+
 main()
 choice = input("Enter number between 1 and 4:\n")
 
