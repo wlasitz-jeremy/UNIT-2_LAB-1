@@ -4,35 +4,42 @@ flights = []
 
 
 def view_flights():
-    file = open('flights.csv', 'r')
-    content = file.readline()
+    f = open('flights.csv', 'r')
+    content = f.readline()
     while content != "":
         content = content.strip().split(",")
         print("{:<15} {:<12} {:<15} {:<17} {:<10}".format(content[0], content[1], content[2], content[3], content[4]))
-        content = file.readline()
-    file.close()
+        content = f.readline()
+    f.close()
 
 
 
 def book_flights(flights, bookings):
-    file = open('flights.csv', 'r')
-    content = file.readlines()
-    file.close()
+    f = open('flights.csv', 'r')
+    content = f.readlines()
+    f.close()
+    b = open("bookings.csv", 'r')
+    substance = b.readlines()
+    b.close()
     flight_number = input("Enter flight number:\n")
     found = False
     index = 0
-    while index < len(content):
+    while index < len(content) and index < len(substance):
+
         items = content[index].strip().split(",")
+        pieces = substance[index].strip().split(",")
+
         if flight_number == items[0]:
             found = True
             available_seats = int(items[3])
             seats_requested  = int(input("Enter number of seats you want to book:\n"))
+
             if seats_requested <= available_seats:
                 items[3] = str(available_seats - seats_requested)
                 content[index] = ",".join(items) + "\n"
                 name = input("Enter passenger name:\n")
-                booking_string = name + "," + flight_number + "," + str(seats_requested)
-                bookings.append(booking_string)
+                booking_string = name + "," + str(flight_number) + "," + str(seats_requested)
+                substance.append(booking_string+ "\n")
                 print("Booking Successful!")
             else:
                 print("Sorry, there are no available seats!")
@@ -41,16 +48,22 @@ def book_flights(flights, bookings):
     else:
         print("Flight not found")
     save_flights("flights.csv", content)
+    save_bookings("bookings.csv", substance)
+
+
+def save_flights(filename, content):
+    f = open(filename, 'w')
+    for line in content:
+      f.write(line)
+    f.close()
 
 
 
-def save_flights(file, flights):
-    file = open('flights.csv', 'w')
-    index = 0
-    while index < len(flights):
-        file.write(flights[index])
-        index += 1
-    file.close()
+def save_bookings(filename, substance):
+    b = open(filename, 'w')
+    for line in substance:
+        b.write(line)
+    b.close()
 
 
 

@@ -1,4 +1,5 @@
 Flight Number,Source,Destination,Available Seats,Price
 195,Calgary,Toronto,67,725.00
-235,Calgary,Cancun,48,1294.00
+235,Calgary,Cancun,17,1294.00
 485,Vancouver,Edmonton,71,863.00
+,,,,
