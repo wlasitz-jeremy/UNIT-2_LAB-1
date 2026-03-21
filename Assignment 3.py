@@ -23,32 +23,29 @@ def book_flights(flights, bookings):
     b.close()
     flight_number = input("Enter flight number:\n")
     found = False
-    index = 0
-    while index < len(content) and index < len(substance):
-
-        items = content[index].strip().split(",")
-        pieces = substance[index].strip().split(",")
-
+    row = 0
+    while row < len(content) and row < len(substance):
+        items = content[row].strip().split(",")
         if flight_number == items[0]:
             found = True
             available_seats = int(items[3])
             seats_requested  = int(input("Enter number of seats you want to book:\n"))
-
             if seats_requested <= available_seats:
                 items[3] = str(available_seats - seats_requested)
-                content[index] = ",".join(items) + "\n"
+                content[row] = ",".join(items) + "\n"
                 name = input("Enter passenger name:\n")
-                booking_string = name + "," + str(flight_number) + "," + str(seats_requested)
-                substance.append(booking_string+ "\n")
+                booking_string = name + "," + flight_number + "," + str(seats_requested)
+                substance.append(booking_string + "\n")
                 print("Booking Successful!")
             else:
                 print("Sorry, there are no available seats!")
             break
-        index += 1
+        row += 1
     else:
         print("Flight not found")
     save_flights("flights.csv", content)
     save_bookings("bookings.csv", substance)
+
 
 
 def save_flights(filename, content):
@@ -64,6 +61,22 @@ def save_bookings(filename, substance):
     for line in substance:
         b.write(line)
     b.close()
+
+
+
+def view_bookings():
+    b = open('bookings.csv', 'r')
+    substance = b.readline()
+    while substance != "":
+        substance = substance.strip().split(",")
+        print("{:<17} {:<16} {:<17}".format(substance[0], substance[1], substance[2]))
+        substance = b.readline()
+    b.close()
+
+
+
+def cancel_bookings():
+    b = open('bookings.csv', 'r')
 
 
 
@@ -86,9 +99,7 @@ elif choice == '2':
     book_flights(flights, bookings)
 
 elif choice == '3':
-    pass
-
-
+    view_bookings()
 
 elif choice == '4':
     pass
