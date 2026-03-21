@@ -41,7 +41,7 @@ def book_flights(flights, bookings):
                 print("Sorry, there are no available seats!")
             break
         row += 1
-    else:
+    if not found:
         print("Flight not found")
     save_flights("flights.csv", content)
     save_bookings("bookings.csv", substance)
@@ -76,7 +76,37 @@ def view_bookings():
 
 
 def cancel_bookings():
-    b = open('bookings.csv', 'r')
+    b = open("bookings.csv", 'r')
+    substance = b.readlines()
+    b.close()
+    f = open('flights.csv', 'r')
+    content = f.readlines()
+    f.close()
+    flight_number = input("Enter flight number:\n")
+    name = input("Enter passenger name:\n")
+    found = False
+    b_row = 0
+    while b_row < len(substance):
+        pieces = substance[b_row].strip().split(",")
+        if len(pieces) >= 2 and pieces[1] == flight_number and pieces[0] == name:
+            found = True
+            substance.pop(b_row)
+            f_row = 0
+            while f_row < len(content):
+                items = content[f_row].strip().split(",")
+                if items[0] == flight_number:
+                    available_seats = int(items[3])
+                    cancelled_seats = int(pieces[2])
+                    items[3] = str(available_seats + cancelled_seats)
+                    content[f_row] = ",".join(items) + "\n"
+                    break
+                f_row += 1
+            print("Booking Cancelled!")
+        b_row += 1
+    if not found:
+        print("No booking found!")
+    save_flights("flights.csv", content)
+    save_bookings("bookings.csv", substance)
 
 
 
@@ -102,9 +132,7 @@ elif choice == '3':
     view_bookings()
 
 elif choice == '4':
-    pass
-
-
+    cancel_bookings()
 
 else:
     exit()
