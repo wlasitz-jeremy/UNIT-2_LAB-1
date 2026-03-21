@@ -153,8 +153,7 @@ main()
 choice = input("Enter number between 1 and 4:\n")
 
 if choice == '1':
-    # view_flights(flights)
-    load_flights(flights)
+    view_flights(flights)
 
 elif choice == '2':
     book_flights(flights, bookings)
