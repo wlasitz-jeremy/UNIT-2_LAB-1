@@ -3,7 +3,7 @@ flights = []
 
 
 
-def view_flights():
+def view_flights(flights):
     f = open('flights.csv', 'r')
     content = f.readline()
     while content != "":
@@ -56,6 +56,20 @@ def save_flights(filename, content):
 
 
 
+def load_flights(filename):
+    f = open(filename, 'r')
+    content = f.readlines()
+    f.close()
+    flights_list = []
+    row = 0
+    while row < len(content):
+        items = content[row].strip().split(",")
+        flights_list.append(items)
+        row += 1
+    return flights_list
+
+
+
 def save_bookings(filename, substance):
     b = open(filename, 'w')
     for line in substance:
@@ -64,7 +78,21 @@ def save_bookings(filename, substance):
 
 
 
-def view_bookings():
+def load_bookings(filename):
+    b = open(filename, 'r')
+    substance = b.readlines()
+    b.close()
+    bookings_list = []
+    row = 0
+    while row < len(substance):
+        pieces = substance[row].strip().split(",")
+        bookings_list.append(pieces)
+        row += 1
+    return bookings_list
+
+
+
+def view_bookings(bookings):
     b = open('bookings.csv', 'r')
     substance = b.readline()
     while substance != "":
@@ -75,7 +103,7 @@ def view_bookings():
 
 
 
-def cancel_bookings():
+def cancel_bookings(flights, bookings):
     b = open("bookings.csv", 'r')
     substance = b.readlines()
     b.close()
@@ -125,16 +153,17 @@ main()
 choice = input("Enter number between 1 and 4:\n")
 
 if choice == '1':
-    view_flights()
+    # view_flights(flights)
+    load_flights(flights)
 
 elif choice == '2':
     book_flights(flights, bookings)
 
 elif choice == '3':
-    view_bookings()
+    view_bookings(bookings)
 
 elif choice == '4':
-    cancel_bookings()
+    cancel_bookings(flights, bookings)
 
 else:
     exit()
