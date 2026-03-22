@@ -26,7 +26,7 @@ def book_flights(flights, bookings):
     substance = b.readlines()
     b.close()
 
-    flight_number = input("Enter flight number:\n")
+    flight_number = input("Enter flight number: ")
 
     found = False
     row = 0
@@ -40,13 +40,13 @@ def book_flights(flights, bookings):
             found = True
 
             available_seats = int(items[3])
-            seats_requested  = int(input("Enter number of seats you want to book:\n"))
+            seats_requested  = int(input("Enter number of seats you want to book: "))
 
             if seats_requested <= available_seats:
                 items[3] = str(available_seats - seats_requested)
                 content[row] = ",".join(items) + "\n"
 
-                name = input("Enter passenger name:\n")
+                name = input("Enter passenger name: ")
 
                 booking_string = name + "," + flight_number + "," + str(seats_requested)
                 substance.append(booking_string + "\n")
@@ -137,8 +137,8 @@ def cancel_bookings(flights, bookings):
     content = f.readlines()
     f.close()
 
-    flight_number = input("Enter flight number:\n")
-    name = input("Enter passenger name:\n")
+    flight_number = input("Enter flight number: ")
+    name = input("Enter passenger name: ")
 
     found = False
     b_row = 0
@@ -192,7 +192,7 @@ def main():
         "5. Exit")
 
 main()
-choice = input("Enter number between 1 and 4:\n")
+choice = input("Enter number between 1 and 4: ")
 
 while choice != '5':
 
@@ -208,4 +208,5 @@ while choice != '5':
     elif choice == '4':
         cancel_bookings(flights, bookings)
 
-    choice = input("Enter number between 1 and 4:\n")
+    main()
+    choice = input("Enter number between 1 and 4: ")
