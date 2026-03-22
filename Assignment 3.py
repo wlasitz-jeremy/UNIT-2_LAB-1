@@ -1,11 +1,34 @@
+import os
+
 bookings = []
 flights = []
 
 
 
+def main():
+
+    print("Welcome to the Flight Viewer\n"
+        "1. View Flights\n"
+        "2. Book Flights\n"
+        "3. View Bookings\n"
+        "4. Cancel Bookings\n"
+        "5. Exit")
+
+    flights_filename = input("Enter the flight data file name: ").strip().lower()
+    bookings_filename = input("Enter the booking data file name: ").strip().lower()
+    while not os.path.exists(flights_filename) and not os.path.exists(bookings_filename):
+        print(f"Error file {flights_filename} and {bookings_filename }do not exist. Please try again.")
+        flights_filename = input("Enter the flight data file name: ").strip().lower()
+        bookings_filename = input("Enter the booking data file name: ").strip().lower()
+
+    flights = load_flights(flights_filename)
+    bookings = load_bookings(bookings_filename)
+
+
+
 def view_flights(flights):
 
-    f = open('flights.csv', 'r')
+    f = open("flights.csv", 'r')
     content = f.readline()
 
     while content != "":
@@ -18,7 +41,7 @@ def view_flights(flights):
 
 def book_flights(flights, bookings):
 
-    f = open('flights.csv', 'r')
+    f = open("flights.csv", 'r')
     content = f.readlines()
     f.close()
 
@@ -26,7 +49,7 @@ def book_flights(flights, bookings):
     substance = b.readlines()
     b.close()
 
-    flight_number = input("Enter flight number: ")
+    flight_number = input("Enter flight number: ").strip()
 
     found = False
     row = 0
@@ -40,40 +63,40 @@ def book_flights(flights, bookings):
             found = True
 
             available_seats = int(items[3])
-            seats_requested  = int(input("Enter number of seats you want to book: "))
+            seats_requested  = int(input("Enter number of seats you want to book: ").strip())
 
             if seats_requested <= available_seats:
                 items[3] = str(available_seats - seats_requested)
                 content[row] = ",".join(items) + "\n"
 
-                name = input("Enter passenger name: ")
+                name = input("Enter passenger name: ").strip().title()
 
                 booking_string = name + "," + flight_number + "," + str(seats_requested)
                 substance.append(booking_string + "\n")
                 print("Booking Successful!")
             else:
-                print("Sorry, there are no available seats!")
+                print(f"Sorry, there are not enough seats available, only {available_seats} available.")
             break
 
         row += 1
     if not found:
         print("Flight not found")
 
-    save_flights("flights.csv", content)
-    save_bookings("bookings.csv", substance)
+    save_flights(flights, content)
+    save_bookings(bookings, substance)
 
 
 
-def save_flights(filename, content):
-    f = open(filename, 'w')
+def save_flights(flights, content):
+    f = open("flights.csv", 'w')
     for line in content:
       f.write(line)
     f.close()
 
 
 
-def load_flights(filename):
-    f = open(filename, 'r')
+def load_flights(flights):
+    f = open("flights.csv", 'r')
     content = f.readlines()
     f.close()
 
@@ -88,16 +111,18 @@ def load_flights(filename):
 
 
 
-def save_bookings(filename, substance):
-    b = open(filename, 'w')
+def save_bookings(bookings, substance):
+
+    b = open("bookings.csv", 'w')
     for line in substance:
         b.write(line)
     b.close()
 
 
 
-def load_bookings(filename):
-    b = open(filename, 'r')
+def load_bookings(bookings):
+
+    b = open("bookings.csv", 'r')
     substance = b.readlines()
     b.close()
 
@@ -114,7 +139,7 @@ def load_bookings(filename):
 
 def view_bookings(bookings):
 
-    b = open('bookings.csv', 'r')
+    b = open("bookings.csv", 'r')
     substance = b.readline()
 
     while substance != "":
@@ -133,12 +158,12 @@ def cancel_bookings(flights, bookings):
     substance = b.readlines()
     b.close()
 
-    f = open('flights.csv', 'r')
+    f = open("flights.csv", 'r')
     content = f.readlines()
     f.close()
 
-    flight_number = input("Enter flight number: ")
-    name = input("Enter passenger name: ")
+    flight_number = input("Enter flight number: ").strip()
+    name = input("Enter passenger name: ").strip().title()
 
     found = False
     b_row = 0
@@ -174,25 +199,12 @@ def cancel_bookings(flights, bookings):
     if not found:
         print("No booking found!")
 
-    save_flights("flights.csv", content)
-    save_bookings("bookings.csv", substance)
+    save_flights(flights, content)
+    save_bookings(bookings, substance)
 
-
-
-def main():
-
-    flights = load_flights("flights.csv")
-    bookings = load_bookings("bookings.csv")
-
-    print("Welcome to the Flight Viewer\n"
-        "1. View Flights\n"
-        "2. Book Flights\n"
-        "3. View Bookings\n"
-        "4. Cancel Bookings\n"
-        "5. Exit")
 
 main()
-choice = input("Enter number between 1 and 4: ")
+choice = input("Enter number between 1 and 5: ").strip()
 
 while choice != '5':
 
@@ -208,5 +220,7 @@ while choice != '5':
     elif choice == '4':
         cancel_bookings(flights, bookings)
 
-    main()
-    choice = input("Enter number between 1 and 4: ")
+    else:
+        print("Invalid choice, please enter number between 1 and 5")
+    choice = input("Enter number between 1 and 5: ").strip()
+print ("Thank you for using Flight Viewer")
