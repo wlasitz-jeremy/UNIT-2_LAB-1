@@ -389,3 +389,184 @@
 # x = Rectangle(width, length)
 # print(x.perimeter())
 # print(x.area())
+
+
+
+
+# # Flight Booking System
+# # CPRG 216 - Assignment 4: Functions, Scoping and Abstraction
+#
+# # Start importing os toolbox so we can check if a file exists
+# import os
+#
+# # Constants
+# FLIGHT_NUM_IDX = 0
+# SOURCE_IDX = 1
+# DEST_IDX = 2
+# SEATS_IDX = 3
+# PRICE_IDX = 4
+#
+#
+# # File read and it breakdown into single elements
+# def load_flights(file_name):
+#     flights = []
+#     with open(file_name, "r") as f:
+#         for line in f:
+#             line = line.strip()
+#             if line != "":
+#                 parts = line.split(",")
+#                 flight = [
+#                     parts[0].strip(),
+#                     parts[1].strip(),
+#                     parts[2].strip(),
+#                     int(parts[3].strip()),
+#                     float(parts[4].strip())
+#                 ]
+#                 flights.append(flight)
+#     return flights
+#
+#
+# # Converts flights back to text and writes them to the file
+# def save_flights(file_name, flights):
+#     with open(file_name, "w") as f:
+#         for flight in flights:
+#             line = (flight[FLIGHT_NUM_IDX] + "," +
+#                     flight[SOURCE_IDX] + "," +
+#                     flight[DEST_IDX] + "," +
+#                     str(flight[SEATS_IDX]) + "," +
+#                     str(flight[PRICE_IDX]) + "\n")
+#             f.write(line)
+#
+#
+# # Display all available flights in a formatted table
+# def view_flights(flights):
+#     print("\n" + "-" * 65)
+#     print("{:<12} {:<15} {:<15} {:<10} {}".format(
+#         "Flight No", "Source", "Destination", "Seats", "Price ($)"))
+#     print("-" * 65)
+#     for flight in flights:
+#         print("{:<12} {:<15} {:<15} {:<10} {:.2f}".format(
+#             flight[FLIGHT_NUM_IDX],
+#             flight[SOURCE_IDX],
+#             flight[DEST_IDX],
+#             flight[SEATS_IDX],
+#             flight[PRICE_IDX]))
+#     print("-" * 65)
+#
+#
+# # Finds the flight, checks seats, saves booking if successful
+# def book_flight(passenger_name, file_name, flights, bookings):
+#     flight_num = input("Enter flight number: ").strip()
+#
+#     found_flight = None
+#     for flight in flights:
+#         if flight[FLIGHT_NUM_IDX].upper() == flight_num.upper():
+#             found_flight = flight
+#             break
+#
+#     if found_flight is not None:
+#         seats_requested = int(input("Enter number of seats to book: "))
+#         if seats_requested <= found_flight[SEATS_IDX]:
+#             found_flight[SEATS_IDX] -= seats_requested
+#             save_flights(file_name, flights)
+#             booking = (passenger_name + "," +
+#                        found_flight[FLIGHT_NUM_IDX] + "," + str(seats_requested))
+#             bookings.append(booking)
+#             print("Booking confirmed! You booked " + str(seats_requested) +
+#                   " seat(s) on flight " + found_flight[FLIGHT_NUM_IDX] + ".")
+#         else:
+#             print("Not enough seats available. Only " +
+#                   str(found_flight[SEATS_IDX]) + " seat(s) remaining.")
+#     else:
+#         print("Flight not found.")
+#
+#
+# # Finds and displays all bookings that belong to this passenger
+# def view_bookings(passenger_name, bookings):
+#     booking_found = False
+#     print("\n--- Your Bookings ---")
+#     for booking in bookings:
+#         parts = booking.split(",")
+#         if parts[0].strip().lower() == passenger_name.strip().lower():
+#             booking_found = True
+#             print("Flight: " + parts[1].strip() +
+#                   "  |  Seats Booked: " + parts[2].strip())
+#     if not booking_found:
+#         print("You have no bookings.")
+#
+#
+# # Finds the booking, restores the seats, and removes it from the list
+# def cancel_booking(passenger_name, file_name, flights, bookings):
+#     flight_num = input("Enter flight number to cancel: ").strip()
+#
+#     booking_to_cancel = None
+#     for booking in bookings:
+#         parts = booking.split(",")
+#         if (parts[0].strip().lower() == passenger_name.strip().lower() and
+#                 parts[1].strip().upper() == flight_num.upper()):
+#             booking_to_cancel = booking
+#             break
+#
+#     if booking_to_cancel is not None:
+#         parts = booking_to_cancel.split(",")
+#         seats_to_restore = int(parts[2].strip())
+#
+#         for flight in flights:
+#             if flight[FLIGHT_NUM_IDX].upper() == flight_num.upper():
+#                 flight[SEATS_IDX] += seats_to_restore
+#                 break
+#
+#         save_flights(file_name, flights)
+#         bookings.remove(booking_to_cancel)
+#         print("Booking for flight " + flight_num + " cancelled. " +
+#               str(seats_to_restore) + " seat(s) returned.")
+#     else:
+#         print("Booking not found.")
+#
+#
+# # Shows the menu options and returns what the user picked
+# def main_menu():
+#     print("\n========== Flight Booking System ==========")
+#     print("1. View Available Flights")
+#     print("2. Book a Flight")
+#     print("3. View My Bookings")
+#     print("4. Cancel a Booking")
+#     print("5. Exit")
+#     return input("Select an option (1-5): ").strip()
+#
+#
+# # Runs the whole program from start to finish
+# def main():
+#     print("============================================")
+#     print("   Welcome to the Flight Booking System!   ")
+#     print("============================================")
+#
+#     # Ask for file name; re-prompt if file does not exist
+#     file_name = input("Enter the flights data filename: ").strip()
+#     while not os.path.exists(file_name):
+#         print("Error: File '" + file_name + "' not found. Please try again.")
+#         file_name = input("Enter the flights data filename: ").strip()
+#
+#     flights = load_flights(file_name)
+#     bookings = []
+#
+#     passenger_name = input("Enter your name: ").strip()
+#
+#     option = main_menu()
+#     while option != "5":
+#         if option == "1":
+#             view_flights(flights)
+#         elif option == "2":
+#             book_flight(passenger_name, file_name, flights, bookings)
+#         elif option == "3":
+#             view_bookings(passenger_name, bookings)
+#         elif option == "4":
+#             cancel_booking(passenger_name, file_name, flights, bookings)
+#         else:
+#             print("Invalid option. Please enter a number between 1 and 5.")
+#         option = main_menu()
+#
+#     print("\nThank you for using the Flight Booking System. Goodbye!")
+#
+# # Start the program
+# main()
