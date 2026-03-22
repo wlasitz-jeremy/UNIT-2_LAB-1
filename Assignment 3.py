@@ -48,28 +48,26 @@ def view_flights(flights):
 
 
 def book_flights(flights, bookings):
-    # Opens the flights file
+    # Opens flights file and reads through entire file closing it after
     f = open("flights.csv", 'r')
     content = f.readlines()
     f.close()
-    # Opens the bookings file
+    # Opens bookings file and reads through entire file closing it after
     b = open("bookings.csv", 'r')
     substance = b.readlines()
     b.close()
     # Asks user for flight number
     flight_number = input("Enter flight number: ").strip()
-
     found = False
     row = 0
-    # Loops while the row is less than the flights and bookings files
+    # Loops though until end of flights and bookings file
     while row < len(content) and row < len(substance):
-        # Splits the flights file into items via commas
+        # Splits and strips the current row in both files
         items = content[row].strip().split(",")
-        # If the entered flight number exists in the flights csv file
+        # If the entered flight number exists in the flights file
         if flight_number == items[0]:
-
             found = True
-            # Seats available equals the seats column of the flights.csv file. Enter the amount of seats you wish to book
+            # Seats available equals the seats column of the flights file. Enter the amount of seats you wish to book
             available_seats = int(items[3])
             seats_requested  = int(input("Enter number of seats you want to book: ").strip())
             # If the seats you want ot book are less than or equal to the available seats
@@ -82,7 +80,7 @@ def book_flights(flights, bookings):
                 name = input("Enter passenger name: ").strip().title()
                 # Updates bookings_string with the passenger name, flight number and amount of seats requested in the proper format
                 booking_string = name + "," + flight_number + "," + str(seats_requested)
-                # Appends the bookings.csv file with the bookings_string and adds information in proper format
+                # Appends the bookings.csv file with the bookings_string and adds information
                 substance.append(booking_string + "\n")
                 # Prints booking was created
                 print("Booking Successful!")
@@ -216,8 +214,9 @@ def cancel_bookings(flights, bookings):
                 items = content[f_row].strip().split(",")
                 # Finds corresponding flight number
                 if items[0] == flight_number:
-                    # Setting seat variables
+                    # Seats available equals the seats column in the flights file
                     available_seats = int(items[3])
+                    # Canceled seats equal the booked seats column in the bookings file
                     canceled_seats = int(pieces[2])
                     # Adding canceled seats back into the available seats
                     items[3] = str(available_seats + canceled_seats)
