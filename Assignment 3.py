@@ -194,17 +194,18 @@ def main():
 main()
 choice = input("Enter number between 1 and 4:\n")
 
-if choice == '1':
-    view_flights(flights)
+while choice != '5':
 
-elif choice == '2':
-    book_flights(flights, bookings)
+    if choice == '1':
+        view_flights(flights)
 
-elif choice == '3':
-    view_bookings(bookings)
+    elif choice == '2':
+        book_flights(flights, bookings)
 
-elif choice == '4':
-    cancel_bookings(flights, bookings)
+    elif choice == '3':
+        view_bookings(bookings)
 
-else:
-    exit()
+    elif choice == '4':
+        cancel_bookings(flights, bookings)
+
+    choice = input("Enter number between 1 and 4:\n")
