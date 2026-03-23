@@ -13,7 +13,7 @@ content = {}
 
 def main():
     global bookings
-    bookings = load_bookings(bookings)
+
 
     print(f"Simple Hotel Booking\n"
         f"1) Add booking\n"
@@ -22,6 +22,8 @@ def main():
         f"4) Cancel booking\n"
         f"5) Change booking\n"
         f"6) Exit")
+
+    bookings = load_bookings(bookings)
 
 
 
@@ -41,8 +43,32 @@ def load_bookings(bookings):
 
 
 
-def save_bookings():
-    pass
+def save_bookings(bookings):
+    days = {}
+    row = 0
+    while row < len(bookings):
+        items = bookings[row]
+        if len(items) < 4:
+            row += 1
+            continue
+
+        day= items[0].title()
+        if day not in days:
+            days[day] = []
+
+        days[day].append(items)
+        row += 1
+        for day in days:
+            file_name = f"{day}_hotel_booking.csv"
+            b = open(file_name, "w")
+            b.write("Day,Room,Hour,Guest\n")
+            rows = days[day]
+            r = 0
+            while r < len(rows):
+                line = ",".join(rows[r])
+                b.write(line + "\n")
+                r += 1
+            b.close()
 
 
 
