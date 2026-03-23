@@ -1,10 +1,13 @@
 # Import OS Module
+import csv
 import os
 
 # Constants
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 VALID_HOURS = 9-17
 ROOMS = (101, 102, 201)
+bookings = []
+content = {}
 
 
 def main():
@@ -26,10 +29,32 @@ def main():
     # Saves entered file names in variable
     bookings = load_bookings(bookings_filename)
 
-def load_bookings():
+def load_bookings(bookings):
+    for day in VALID_DAYS:
+        file_name = f"{day}_hotel_booking.csv"
+        b = open(file_name, "r")
+        content[day] = b.readlines()
 
 
-def save_bookings():
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def save_bookings(bookings):
+
+
 
 
 def add_booking():
