@@ -2,6 +2,7 @@
 import os
 import csv
 
+
 # Constants
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 VALID_HOURS = (9, 18)
@@ -20,7 +21,6 @@ def main():
         f"4) Cancel booking\n"
         f"5) Change booking\n"
         f"6) Exit")
-
     bookings = load_bookings(bookings)
 
 
@@ -161,15 +161,11 @@ def find_booking():
 def cancel_booking():
     pass
 
-
-
+    save_bookings(bookings)
 def change_booking():
     pass
 
-
-
-
-
+    save_bookings(bookings)
 
 
 
