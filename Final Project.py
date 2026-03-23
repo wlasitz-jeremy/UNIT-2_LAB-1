@@ -13,7 +13,7 @@ content = {}
 
 def main():
     global bookings
-    bookings = load_bookings()
+    bookings = load_bookings(bookings)
 
     print(f"Simple Hotel Booking\n"
         f"1) Add booking\n"
@@ -25,7 +25,7 @@ def main():
 
 
 
-def load_bookings():
+def load_bookings(bookings):
     bookings = []
     for file in os.listdir():
         if file.endswith("_hotel_booking.csv"):
@@ -56,6 +56,8 @@ def print_day_calender():
     file_name = f"{day}_hotel_booking.csv"
     b = open(file_name, "r")
     content = b.readline()
+    header = content.strip().split(",")
+    print("{:<15}".format(header[0]))
     while content != "":
         items = content.strip().split(",")
         if len(items) < 4:
