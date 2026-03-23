@@ -4,13 +4,15 @@ import csv
 
 # Constants
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-VALID_HOURS = 9-17
+VALID_HOURS = (9, 18)
 ROOMS = (101, 102, 201)
 bookings = []
 content = {}
 
 
 def main():
+    global bookings
+    bookings = load_bookings()
 
     print(f"Simple Hotel Booking\n"
         f"1) Add booking\n"
@@ -22,15 +24,23 @@ def main():
 
 
 
-def load_bookings(bookings):
-    for day in VALID_DAYS:
-        file_name = f"{day}_hotel_booking.csv"
-        b = open(file_name, "r")
-        content[day] = b.readlines()
+def load_bookings():
+    bookings = []
+    for file in os.listdir():
+        if file.endswith("_hotel_booking.csv"):
+            b = open(file, "r")
+            content = b.readlines()
+            b.close()
+            row = 0
+            while row < len(content):
+                items = content[row].strip().split(",")
+                bookings.append(items)
+                row += 1
+    return bookings
 
 
 
-def save_bookings(bookings):
+def save_bookings():
     pass
 
 
