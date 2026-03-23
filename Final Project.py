@@ -190,6 +190,6 @@ while option != '6':
         change_booking()
 
     else:
-        print("Invalid choice, please enter number between 1 and 6")
+        print("Invalid choice, enter 1 to 6")
     option = input("Select option: ").strip()
 print ("Saved. Goodbye.")
