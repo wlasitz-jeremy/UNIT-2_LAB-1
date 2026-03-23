@@ -111,8 +111,7 @@ def add_booking(bookings):
             return
         row += 1
     print("Invalid hour.")
-
-
+    save_bookings(bookings)
 
 def print_day_calender():
     day = input("Day (Monday-Saturday): ").strip().title()
