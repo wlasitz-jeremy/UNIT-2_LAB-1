@@ -52,7 +52,7 @@ def add_booking():
 
 
 def print_day_calender():
-    day = input("Day (Monday-Saturday):  ").strip().title()
+    day = input("Day (Monday-Saturday): ").strip().title()
     file_name = f"{day}_hotel_booking.csv"
     b = open(file_name, "r")
     content = b.readline()
