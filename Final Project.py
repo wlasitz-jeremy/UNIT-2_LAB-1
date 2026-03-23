@@ -132,7 +132,29 @@ def print_day_calender():
 
 
 def find_booking():
-    pass
+    guest_name = input("Guest name: ").strip().title()
+    found = False
+    for file in os.listdir():
+        if file.endswith("_hotel_booking.csv"):
+            day = file.split("_")[0]
+            b = open(file, "r")
+            content = b.readlines()
+            while content != "":
+                items = content.strip().split(",")
+                if len(items) < 4:
+                    if items[1] == guest_name:
+                        print(f"{guest_name} is in Room 101 on {day} at {items[1]}")
+                        found = True
+                    elif items[2] == guest_name:
+                        print(f"{guest_name} is in Room 102 on {day} at {items[2]}")
+                        found = True
+                    elif items[3] == guest_name:
+                        print(f"{guest_name} is in Room 201 on {day} at {items[3]}")
+                        found = True
+                content = b.readline()
+            b.close()
+    if not found:
+        print("No booking found.")
 
 
 
