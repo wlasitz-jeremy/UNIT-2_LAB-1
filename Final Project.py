@@ -7,11 +7,20 @@ VALID_HOURS = 9-17
 ROOMS = (101, 102, 201)
 
 
+def load_bookings():
 
 
 
 
 
+
+def save_bookings():
+
+
+
+
+
+def print_day_calender():
 
 
 
