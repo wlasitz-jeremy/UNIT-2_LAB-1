@@ -60,19 +60,19 @@ option = input("Select option: ")
 while option != '6':
 
     if option == '1':
-
+        add_booking()
 
     elif option == '2':
-
+        print_day_calender()
 
     elif option == '3':
-
+       find_booking()
 
     elif option == '4':
-
+        cancel_booking()
 
     elif option == '5':
-
+        change_booking()
 
     else:
         print("Invalid choice, please enter number between 1 and 6")
