@@ -72,7 +72,7 @@ def save_bookings(bookings):
 
 def add_booking(bookings):
 
-    room_number = input("Room number (101/102/201): ")
+    room_number = input("Room number (101/102/201): ").strip()
     day = input("Day (Monday-Saturday): ").strip().title()
     file_name = f"{day}_hotel_booking.csv"
     b = open(file_name, "r")
@@ -80,15 +80,37 @@ def add_booking(bookings):
     b.close()
     hour = input("Hour (9-17): ").strip()
     guest_name = input("Guest name: ").strip().title()
-    row =0
+    row = 0
     while row < len(content):
         items = content[row].strip().split(",")
-        if len(items) < 4:
+        if items[0] == "Time":
             row += 1
             continue
-        if room_number == items[1] or items[2] or items[3]:
-            if hour in VALID_HOURS:
-
+        time_value = items[0].split(":")[0]
+        if hour == time_value:
+            if room_number == "101":
+                room_index = 1
+            elif room_number == "102":
+                room_index = 2
+            elif room_number == "201":
+                room_index = 3
+            else:
+                print("Invalid room number.")
+                return
+            if items[room_index].lower() == "empty":
+                print("Could not add booking.")
+                return
+            items[room_index] = guest_name
+            new_line = ",".join(items) + "\n"
+            content[row] = new_line
+            b= open(file_name, "w")
+            for line in content:
+                b.write(line)
+            b.close()
+            print("Booking added.")
+            return
+        row += 1
+    print("Invalid hour.")
 
 
 
