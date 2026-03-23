@@ -10,6 +10,7 @@ bookings = []
 content = {}
 
 
+
 def main():
     global bookings
     bookings = load_bookings()
