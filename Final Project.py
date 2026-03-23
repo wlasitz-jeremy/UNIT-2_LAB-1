@@ -12,9 +12,7 @@ content = {}
 
 
 def main():
-    global bookings
-
-
+    bookings = []
     print(f"Simple Hotel Booking\n"
         f"1) Add booking\n"
         f"2) Show day calender\n"
@@ -97,7 +95,7 @@ def add_booking(bookings):
             else:
                 print("Invalid room number.")
                 return
-            if items[room_index].lower() == "empty":
+            if items[room_index].lower() != "empty":
                 print("Could not add booking.")
                 return
             items[room_index] = guest_name
@@ -112,6 +110,8 @@ def add_booking(bookings):
         row += 1
     print("Invalid hour.")
     save_bookings(bookings)
+
+
 
 def print_day_calender():
     day = input("Day (Monday-Saturday): ").strip().title()
