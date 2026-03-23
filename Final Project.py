@@ -51,11 +51,9 @@ def save_bookings(bookings):
         if len(items) < 4:
             row += 1
             continue
-
         day= items[0].title()
         if day not in days:
             days[day] = []
-
         days[day].append(items)
         row += 1
         for day in days:
@@ -72,8 +70,25 @@ def save_bookings(bookings):
 
 
 
-def add_booking():
-    pass
+def add_booking(bookings):
+
+    room_number = input("Room number (101/102/201): ")
+    day = input("Day (Monday-Saturday): ").strip().title()
+    file_name = f"{day}_hotel_booking.csv"
+    b = open(file_name, "r")
+    content = b.readlines()
+    b.close()
+    hour = input("Hour (9-17): ").strip()
+    guest_name = input("Guest name: ").strip().title()
+    row =0
+    while row < len(content):
+        items = content[row].strip().split(",")
+        if len(items) < 4:
+            row += 1
+            continue
+        if room_number == items[1] or items[2] or items[3]:
+            if hour in VALID_HOURS:
+
 
 
 
@@ -121,7 +136,7 @@ option = input("Select option: ").strip()
 while option != '6':
 
     if option == '1':
-        add_booking()
+        add_booking(bookings)
 
     elif option == '2':
         print_day_calender()
