@@ -1,6 +1,6 @@
-# Import OS Module
-import csv
+# Import OS and CSV Module
 import os
+import csv
 
 # Constants
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
