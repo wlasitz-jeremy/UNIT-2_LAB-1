@@ -31,11 +31,11 @@ def main():
 
     print(f"Simple Hotel Booking\n"
         f"1) Add booking\n"
-        f"2) Show day calender"
-        f"3) Find booking by guest"
-        f"4) Cancel booking"
-        f"5) Change booking"
-        f"6) Exit")
+        f"2) Show day calender\n"
+        f"3) Find booking by guest\n"
+        f"4) Cancel booking\n"
+        f"5) Change booking\n"
+        f"6) Exit\n")
     option = input("Select option: ")
 
 
