@@ -19,8 +19,8 @@ def main():
     flights_filename = input("Enter the flight data file name: ").strip().lower()
     bookings_filename = input("Enter the booking data file name: ").strip().lower()
     # Loops until file name entered exists
-    while not os.path.exists(flights_filename) and not os.path.exists(bookings_filename):
-        print(f"Error file {flights_filename} and {bookings_filename }do not exist. Please try again.")
+    while not os.path.exists(flights_filename) or not os.path.exists(bookings_filename):
+        print(f"Error file {flights_filename} and/or {bookings_filename } do not exist. Please try again.")
         # Strips all white spaces and converts text to lowercase
         flights_filename = input("Enter the flight data file name: ").strip().lower()
         bookings_filename = input("Enter the booking data file name: ").strip().lower()
