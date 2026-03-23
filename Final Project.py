@@ -10,21 +10,22 @@ ROOMS = (101, 102, 201)
 def load_bookings():
 
 
-
-
-
-
 def save_bookings():
 
 
-
+def add_booking():
 
 
 def print_day_calender():
 
 
+def find_booking():
 
 
+def cancel_booking():
+
+
+def change_booking():
 
 
 def main():
