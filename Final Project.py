@@ -9,6 +9,18 @@ VALID_HOURS = (9, 18)
 ROOMS = (101, 102, 201)
 bookings = []
 content = {}
+day = ""
+file_name = ""
+
+
+
+def normalize_day():
+    pass
+
+
+
+def slot_key():
+    pass
 
 
 
@@ -21,11 +33,11 @@ def main():
         f"4) Cancel booking\n"
         f"5) Change booking\n"
         f"6) Exit")
-    bookings = load_bookings(bookings)
+    bookings = load_bookings(file_name)
 
 
 
-def load_bookings(bookings):
+def load_bookings(file_name):
     bookings = []
     for file in os.listdir():
         if file.endswith("_hotel_booking.csv"):
@@ -45,7 +57,7 @@ def load_bookings(bookings):
 
 
 
-def save_bookings(bookings):
+def save_bookings(file_name, bookings):
     days = {}
     row = 0
     while row < len(bookings):
@@ -115,11 +127,11 @@ def add_booking(bookings):
             return
         row += 1
     print("Invalid hour.")
-    save_bookings(bookings)
+    save_bookings(file_name, bookings)
 
 
 
-def print_day_calender():
+def print_day_calender(bookings, day):
     day = input("Day (Monday-Saturday): ").strip().title()
     file_name = f"{day}_hotel_booking.csv"
     b = open(file_name, "r")
@@ -145,19 +157,20 @@ def find_booking():
             day = file.split("_")[0]
             b = open(file, "r")
             content = b.readlines()
-            while content != "":
-                items = content.strip().split("\t")
-                if len(items) < 4:
-                    if items[1] == guest_name:
-                        print(f"{guest_name} is in Room 101 on {day} at {items[1]}")
-                        found = True
-                    elif items[2] == guest_name:
-                        print(f"{guest_name} is in Room 102 on {day} at {items[2]}")
-                        found = True
-                    elif items[3] == guest_name:
-                        print(f"{guest_name} is in Room 201 on {day} at {items[3]}")
-                        found = True
-                content = b.readline()
+            row = 1
+            while row < len(content):
+                items = content[row].strip().split("\t")
+                time = items[0]
+                if items[1].title() == guest_name:
+                    print(f"{guest_name} is in Room 101 on {day.title()} at {items[0]}")
+                    found = True
+                elif items[2].title() == guest_name:
+                    print(f"{guest_name} is in Room 102 on {day.title()} at {items[0]}")
+                    found = True
+                elif items[3].title() == guest_name:
+                    print(f"{guest_name} is in Room 201 on {day.title()} at {items[0]}")
+                    found = True
+                row += 1
             b.close()
     if not found:
         print("No booking found.")
@@ -167,11 +180,11 @@ def find_booking():
 def cancel_booking():
     pass
 
-    save_bookings(bookings)
+    save_bookings(file_name, bookings)
 def change_booking():
     pass
 
-    save_bookings(bookings)
+    save_bookings(file_name, bookings)
 
 
 
@@ -184,7 +197,7 @@ while option != '6':
         add_booking(bookings)
 
     elif option == '2':
-        print_day_calender()
+        print_day_calender(bookings, day)
 
     elif option == '3':
        find_booking()
@@ -197,5 +210,6 @@ while option != '6':
 
     else:
         print("Invalid choice, enter 1 to 6")
+    main()
     option = input("Select option: ").strip()
 print ("Saved. Goodbye.")
