@@ -34,7 +34,11 @@ def load_bookings(bookings):
             b.close()
             row = 0
             while row < len(content):
-                items = content[row].strip().split(",")
+                line = content[row].strip()
+                if "," not in line:
+                    row += 1
+                    continue
+                items = line.split(",")
                 bookings.append(items)
                 row += 1
     return bookings
