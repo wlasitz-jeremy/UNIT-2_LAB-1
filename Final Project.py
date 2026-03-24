@@ -226,24 +226,49 @@ def cancel_booking():
 def change_booking():
     guest_name = input("Guest name: ").strip().title()
     found = False
+    old_file = ""
+    old_row = -1
+    old_column = -1
     for file in os.listdir():
         if file.endswith("_hotel_booking.csv"):
             b = open(file, "r")
             content = b.readlines()
             b.close()
-            row = 1
+            row = 0
             while row < len(content):
                 items = content[row].strip().split("\t")
-                if len(items) < 4:
+                if len(items) >= 4:
                     if items[1].title() == guest_name:
                         found = True
+                        old_file = file
+                        old_row = row
+                        old_column = 1
                     elif items[2].title() == guest_name:
                         found = True
+                        old_file = file
+                        old_row = row
+                        old_column = 2
                     elif items[3].title() == guest_name:
                         found = True
+                        old_file = file
+                        old_row = row
+                        old_column = 3
                 row += 1
     if not found:
         print("No booking found.")
+        return
+    b = open(old_file, "r")
+    old_content = b.readlines()
+    b.close()
+
+    old_items = old_content[old_row].strip().split("\t")
+    old_items[old_column] = "empty"
+    old_content[old_row] = "\t".join(old_items) + "\n"
+
+    b = open(old_file, "w")
+    for line in old_content:
+        b.write(line)
+    b.close()
     room_number = input("New room: ").strip()
     day = input("New day: ").strip().title()
     file_name = f"{day}_hotel_booking.csv"
