@@ -5,7 +5,7 @@ import csv
 
 # Constants
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-VALID_HOURS = (9, 18)
+VALID_HOURS = range (9, 18)
 ROOMS = (101, 102, 201)
 bookings = []
 content = {}
@@ -178,9 +178,51 @@ def find_booking():
 
 
 def cancel_booking():
-    pass
-
+    room_number = input("Room number (101/102/201): ").strip()
+    day = input("Day (Monday-Saturday): ").strip().title()
+    file_name = f"{day}_hotel_booking.csv"
+    b = open(file_name, "r")
+    content = b.readlines()
+    b.close()
+    hour = input("Hour (9-17): ").strip()
+    row = 0
+    while row < len(content):
+        items = content[row].strip().split("\t")
+        if len(items) < 4:
+            row += 1
+            continue
+        if items[0] == "Time":
+            row += 1
+            continue
+        time_value = items[0].split(":")[0].lstrip("0")
+        hour = hour.lstrip("0")
+        if hour == time_value:
+            if room_number == "101":
+                room_index = 1
+            elif room_number == "102":
+                room_index = 2
+            elif room_number == "201":
+                room_index = 3
+            else:
+                print("Invalid room number.")
+                return
+            if items[room_index].lower() == "empty":
+                print("Could not cancel booking.")
+                return
+            items[room_index] = "empty"
+            content[row] = "\t".join(items) + "\n"
+            b = open(file_name, "w")
+            for line in content:
+                b.write(line)
+            b.close()
+            print("Booking canceled.")
+            return
+        row += 1
+    print("Invalid hour.")
     save_bookings(file_name, bookings)
+
+
+
 def change_booking():
     pass
 
