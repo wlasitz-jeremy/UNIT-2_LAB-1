@@ -224,7 +224,67 @@ def cancel_booking():
 
 
 def change_booking():
-    pass
+    guest_name = input("Guest name: ").strip().title()
+    found = False
+    for file in os.listdir():
+        if file.endswith("_hotel_booking.csv"):
+            b = open(file, "r")
+            content = b.readlines()
+            b.close()
+            row = 1
+            while row < len(content):
+                items = content[row].strip().split("\t")
+                if len(items) < 4:
+                    if items[1].title() == guest_name:
+                        found = True
+                    elif items[2].title() == guest_name:
+                        found = True
+                    elif items[3].title() == guest_name:
+                        found = True
+                row += 1
+    if not found:
+        print("No booking found.")
+    room_number = input("New room: ").strip()
+    day = input("New day: ").strip().title()
+    file_name = f"{day}_hotel_booking.csv"
+    b = open(file_name, "r")
+    content = b.readlines()
+    b.close()
+    hour = input("New hour: ").strip()
+    hour = hour.lstrip("0")
+    row = 0
+    while row < len(content):
+        items = content[row].strip().split("\t")
+        if len(items) < 4:
+            row += 1
+            continue
+        if items[0] == "Time":
+            row += 1
+            continue
+        time_value = items[0].split(":")[0].lstrip("0")
+        if hour == time_value:
+            if room_number == "101":
+                room_index = 1
+            elif room_number == "102":
+                room_index = 2
+            elif room_number == "201":
+                room_index = 3
+            else:
+                print("Invalid room number.")
+                return
+            if items[room_index].lower() != "empty":
+                print("Could not add booking.")
+                return
+            items[room_index] = guest_name
+            content[row] = "\t".join(items) + "\n"
+            b = open(file_name, "w")
+            for line in content:
+                b.write(line)
+            b.close()
+            print("Booking changed.")
+            return
+        row += 1
+    print("Invalid hour.")
     save_bookings(file_name, bookings)
 
 
