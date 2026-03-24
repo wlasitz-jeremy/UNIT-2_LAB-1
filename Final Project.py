@@ -207,7 +207,7 @@ def cancel_booking():
                 print("Invalid room number.")
                 return
             if items[room_index].lower() == "empty":
-                print("Could not cancel booking.")
+                print("No booking found.")
                 return
             items[room_index] = "empty"
             content[row] = "\t".join(items) + "\n"
@@ -215,7 +215,7 @@ def cancel_booking():
             for line in content:
                 b.write(line)
             b.close()
-            print("Booking canceled.")
+            print("Canceled.")
             return
         row += 1
     print("Invalid hour.")
