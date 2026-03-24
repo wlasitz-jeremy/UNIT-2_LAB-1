@@ -38,7 +38,7 @@ def load_bookings(bookings):
                 if "," not in line:
                     row += 1
                     continue
-                items = line.split(",")
+                items = line.split("\t")
                 bookings.append(items)
                 row += 1
     return bookings
@@ -73,7 +73,6 @@ def save_bookings(bookings):
 
 
 def add_booking(bookings):
-
     room_number = input("Room number (101/102/201): ").strip()
     day = input("Day (Monday-Saturday): ").strip().title()
     file_name = f"{day}_hotel_booking.csv"
@@ -84,11 +83,15 @@ def add_booking(bookings):
     guest_name = input("Guest name: ").strip().title()
     row = 0
     while row < len(content):
-        items = content[row].strip().split(",")
+        items = content[row].strip().split("\t")
+        if len(items) < 4:
+            row += 1
+            continue
         if items[0] == "Time":
             row += 1
             continue
-        time_value = items[0].split(":")[0]
+        time_value = items[0].split(":")[0].lstrip("0")
+        hour = hour.lstrip("0")
         if hour == time_value:
             if room_number == "101":
                 room_index = 1
@@ -103,8 +106,7 @@ def add_booking(bookings):
                 print("Could not add booking.")
                 return
             items[room_index] = guest_name
-            new_line = ",".join(items) + "\n"
-            content[row] = new_line
+            content[row] = "\t".join(items) + "\n"
             b= open(file_name, "w")
             for line in content:
                 b.write(line)
@@ -122,10 +124,10 @@ def print_day_calender():
     file_name = f"{day}_hotel_booking.csv"
     b = open(file_name, "r")
     content = b.readline()
-    header = content.strip().split(",")
+    header = content.strip().split("\t")
     print("{:<15}".format(header[0]))
     while content != "":
-        items = content.strip().split(",")
+        items = content.strip().split("\t")
         if len(items) < 4:
             content = b.readline()
             continue
@@ -144,7 +146,7 @@ def find_booking():
             b = open(file, "r")
             content = b.readlines()
             while content != "":
-                items = content.strip().split(",")
+                items = content.strip().split("\t")
                 if len(items) < 4:
                     if items[1] == guest_name:
                         print(f"{guest_name} is in Room 101 on {day} at {items[1]}")
