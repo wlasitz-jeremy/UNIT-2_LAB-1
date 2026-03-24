@@ -225,7 +225,6 @@ def cancel_booking():
 
 def change_booking():
     pass
-
     save_bookings(file_name, bookings)
 
 
