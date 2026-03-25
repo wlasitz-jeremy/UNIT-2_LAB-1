@@ -573,21 +573,74 @@ from xml.sax.handler import property_lexical_handler
 
 
 
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    def __str__(self):
-        return f"{self.name} is {self.age} years old"
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#     def __str__(self):
+#         return f"{self.name} is {self.age} years old"
+# def main():
+#     individual = []
+#     while True:
+#         name = input("Enter your name: ").strip()
+#         age = input("Enter your age: ").strip()
+#         if name == "":
+#             break
+#         p = Person(name, age)
+#         individual.append(p)
+#     for person in individual:
+#         print(person)
+# main()
+
+
+
+
+# Pseudocode
+# input filename
+# student_file = open filename
+# create empty Students list
+# total_score = average = 0
+# read all items in student_file
+# 	items = next line split up
+# 	grade = item 2
+# 	create Student object st with item 0, item 1 and grade
+# 	append st to students list
+# 	total_score += grade
+# close student_file
+# average = total_score/length of the students list
+# print average
+# for i in range of the number of students
+# 	if students[i] grade > average
+# 		print students[i]
+import os
+file_name = input("Enter file name: ")
+if os.path.exists(file_name):
+    class Student:
+        def __init__(self, f_name, l_name, grade):
+            self.f_name = f_name
+            self.l_name = l_name
+            self.grade = grade
+        def __str__(self):
+            return f"{self.f_name:<5}{self.l_name:<5}{self.grade:<5}"
+else:
+    print("File doesn't exist")
 def main():
-    individual = []
+    s = open(file_name, "r")
+    content = s.readlines()
+    student = []
+    totalscore = average = 0
     while True:
-        name = input("Enter your name: ").strip()
-        age = input("Enter your age: ").strip()
-        if name == "":
+        f_name = input("Enter first name: ").strip()
+        l_name = input("Enter last name: ").strip()
+        grade = input("Enter grade: ")
+        print("Enter '0' to exit")
+        if f_name =="0":
             break
-        p = Person(name, age)
-        individual.append(p)
-    for person in individual:
-        print(person)
+    st = Student(f_name, l_name, grade)
+    student.append(st)
+    totalscore += int(grade)
+    average = totalscore / len(student)
+    print(f"{"First":<5} {"Last":<5} {"Grade":<5}")
+    print(f"{f_name:<5} {l_name:<5} {average[0]:<5}")
+    s.close()
 main()
