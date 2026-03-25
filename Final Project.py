@@ -224,11 +224,11 @@ def cancel_booking():
 
 
 def change_booking():
-    guest_name = input("Guest name: ").strip().title()
+    guest_name = input("Guest name to change: ").strip().title()
     found = False
     old_file = ""
-    old_row = -1
-    old_column = -1
+    old_row = 0
+    old_column = 0
     for file in os.listdir():
         if file.endswith("_hotel_booking.csv"):
             b = open(file, "r")
