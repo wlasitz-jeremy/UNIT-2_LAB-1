@@ -355,3 +355,11 @@
 
 
 import os
+
+class Booking:
+    def __intit__(self, day, room, hour, guest):
+        self.day = day
+        self.room = room
+        self.hour = hour
+        self.guest = guest
+
