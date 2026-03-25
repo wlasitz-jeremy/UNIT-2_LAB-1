@@ -1,17 +1,18 @@
-# Import OS and CSV Module
+# Import OS Module
 import os
-import csv
 
 
 # Constants
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 VALID_HOURS = range (9, 18)
 ROOMS = (101, 102, 201)
+
+
+# Other
 bookings = []
 content = {}
 day = ""
 file_name = ""
-
 
 
 def normalize_day():
