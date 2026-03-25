@@ -1,5 +1,5 @@
+
 import os
-import csv
 
 BOOKING_FILE = "hotel_bookings.csv"
 
@@ -36,32 +36,50 @@ class BookingSystem:
         return (day, room, str(hour))
 
 
+    # ----------------------------------------------------------
+    # LOAD BOOKINGS — OPTION B STYLE (manual open/close)
+    # ----------------------------------------------------------
     def load_bookings(self, path=BOOKING_FILE):
         self.bookings = []
 
+        # Create file if it doesn't exist
         if not os.path.exists(path):
-            with open(path, "w", newline="") as f:
-                csv.writer(f).writerow(["Day", "Room", "Hour", "Guest"])
+            f = open(path, "w")
+            f.write("Day,Room,Hour,Guest\n")
+            f.close()
             return
 
-        with open(path, "r", newline="") as f:
-            reader = csv.reader(f)
-            next(reader, None)  # skip header
-            for row in reader:
-                if len(row) == 4:
-                    self.bookings.append(Booking(*row))
+        f = open(path, "r")
+        lines = f.read().strip().splitlines()
+        f.close()
+
+        if len(lines) <= 1:
+            return  # Only header exists
+
+        # Parse lines manually
+        for line in lines[1:]:
+            parts = line.split(",")
+            if len(parts) == 4:
+                day, room, hour, guest = [p.strip() for p in parts]
+                self.bookings.append(Booking(day, room, hour, guest))
 
 
+    # ----------------------------------------------------------
+    # SAVE BOOKINGS — OPTION B STYLE (manual open/close)
+    # ----------------------------------------------------------
     def save_bookings(self, path=BOOKING_FILE):
         sorted_rows = sorted(
             (b.to_list() for b in self.bookings),
             key=lambda x: (x[0], x[1], int(x[2]))
         )
 
-        with open(path, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["Day", "Room", "Hour", "Guest"])
-            writer.writerows(sorted_rows)
+        f = open(path, "w")
+        f.write("Day,Room,Hour,Guest\n")
+
+        for row in sorted_rows:
+            f.write(",".join(row) + "\n")
+
+        f.close()
 
 
     def print_day_calendar(self):
@@ -152,7 +170,7 @@ class BookingSystem:
             print("No booking found.")
             return
 
-
+        # Remove old booking
         self.bookings = [b for b in self.bookings if b.guest != guest]
         self.save_bookings()
         print("Old booking removed.")
