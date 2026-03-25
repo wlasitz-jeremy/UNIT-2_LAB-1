@@ -178,13 +178,13 @@ def find_booking():
 
 
 def cancel_booking():
-    room_number = input("Room number (101/102/201): ").strip()
-    day = input("Day (Monday-Saturday): ").strip().title()
+    room_number = input("Room number: ").strip()
+    day = input("Day: ").strip().title()
     file_name = f"{day}_hotel_booking.csv"
     b = open(file_name, "r")
     content = b.readlines()
     b.close()
-    hour = input("Hour (9-17): ").strip()
+    hour = input("Hour: ").strip()
     row = 0
     while row < len(content):
         items = content[row].strip().split("\t")
