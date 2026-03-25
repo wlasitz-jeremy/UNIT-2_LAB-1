@@ -36,13 +36,9 @@ class BookingSystem:
         return (day, room, str(hour))
 
 
-    # ----------------------------------------------------------
-    # LOAD BOOKINGS — OPTION B STYLE (manual open/close)
-    # ----------------------------------------------------------
     def load_bookings(self, path=BOOKING_FILE):
         self.bookings = []
 
-        # Create file if it doesn't exist
         if not os.path.exists(path):
             f = open(path, "w")
             f.write("Day,Room,Hour,Guest\n")
@@ -64,9 +60,6 @@ class BookingSystem:
                 self.bookings.append(Booking(day, room, hour, guest))
 
 
-    # ----------------------------------------------------------
-    # SAVE BOOKINGS — OPTION B STYLE (manual open/close)
-    # ----------------------------------------------------------
     def save_bookings(self, path=BOOKING_FILE):
         sorted_rows = sorted(
             (b.to_list() for b in self.bookings),
@@ -123,7 +116,7 @@ class BookingSystem:
 
         for b in self.bookings:
             if (b.day, b.room, b.hour) == key:
-                print("Could not add booking — conflict.")
+                print("Could not add booking.")
                 return
 
         self.bookings.append(Booking(day, room, hour, guest))
@@ -145,7 +138,7 @@ class BookingSystem:
 
 
     def cancel_booking(self):
-        guest = input("Guest name to cancel: ").strip().title()
+        guest = input("Guest name: ").strip().title()
 
         original_count = len(self.bookings)
         self.bookings = [b for b in self.bookings if b.guest != guest]
@@ -158,7 +151,7 @@ class BookingSystem:
 
 
     def change_booking(self):
-        guest = input("Guest name to change: ").strip().title()
+        guest = input("Guest name: ").strip().title()
         found = False
 
         for b in self.bookings:
@@ -170,7 +163,6 @@ class BookingSystem:
             print("No booking found.")
             return
 
-        # Remove old booking
         self.bookings = [b for b in self.bookings if b.guest != guest]
         self.save_bookings()
         print("Old booking removed.")
