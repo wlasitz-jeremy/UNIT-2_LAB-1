@@ -3,8 +3,7 @@
 # change_of_price=current_price-last_month_price
 # monthly_mortgage=float(current_price)*(0.051)/12
 # print(f'Current price is: {current_price}\nChange of price since last month is: {change_of_price}\nEstimated monthly mortage is: {monthly_mortgage}')
-
-
+from xml.sax.handler import property_lexical_handler
 
 
 # r = float(input('Enter radius '))
@@ -574,3 +573,21 @@
 
 
 
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def __str__(self):
+        return f"{self.name} is {self.age} years old"
+def main():
+    individual = []
+    while True:
+        name = input("Enter your name: ").strip()
+        age = input("Enter your age: ").strip()
+        if name == "":
+            break
+        p = Person(name, age)
+        individual.append(p)
+    for person in individual:
+        print(person)
+main()
