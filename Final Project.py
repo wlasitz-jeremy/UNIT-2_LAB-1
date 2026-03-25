@@ -138,6 +138,7 @@ def print_day_calender(bookings, day):
     b = open(file_name, "r")
     content = b.readline()
     header = content.strip().split("\t")
+    print()
     print("{:<15}".format(header[0]))
     while content != "":
         items = content.strip().split("\t")
