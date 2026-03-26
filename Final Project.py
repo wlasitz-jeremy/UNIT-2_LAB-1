@@ -339,13 +339,3 @@ while option != '6':
     main()
     option = input("Select option: ").strip()
 print ("Saved. Goodbye.")
-
-
-
-
-
-
-
-
-
-
