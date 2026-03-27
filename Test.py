@@ -612,35 +612,92 @@ from xml.sax.handler import property_lexical_handler
 # for i in range of the number of students
 # 	if students[i] grade > average
 # 		print students[i]
-import os
-file_name = input("Enter file name: ")
-if os.path.exists(file_name):
-    class Student:
-        def __init__(self, f_name, l_name, grade):
-            self.f_name = f_name
-            self.l_name = l_name
-            self.grade = grade
-        def __str__(self):
-            return f"{self.f_name:<5}{self.l_name:<5}{self.grade:<5}"
-else:
-    print("File doesn't exist")
-def main():
-    s = open(file_name, "r")
-    content = s.readlines()
-    student = []
-    totalscore = average = 0
-    while True:
-        f_name = input("Enter first name: ").strip()
-        l_name = input("Enter last name: ").strip()
-        grade = input("Enter grade: ")
-        print("Enter '0' to exit")
-        if f_name =="0":
-            break
-    st = Student(f_name, l_name, grade)
-    student.append(st)
-    totalscore += int(grade)
-    average = totalscore / len(student)
-    print(f"{"First":<5} {"Last":<5} {"Grade":<5}")
-    print(f"{f_name:<5} {l_name:<5} {average[0]:<5}")
-    s.close()
-main()
+# import os
+# file_name = input("Enter file name: ")
+# if os.path.exists(file_name):
+#     class Student:
+#         def __init__(self, f_name, l_name, grade):
+#             self.f_name = f_name
+#             self.l_name = l_name
+#             self.grade = grade
+#         def __str__(self):
+#             return f"{self.f_name:<5}{self.l_name:<5}{self.grade:<5}"
+# else:
+#     print("File doesn't exist")
+# def main():
+#     s = open(file_name, "r")
+#     content = s.readlines()
+#     student = []
+#     totalscore = average = 0
+#     while True:
+#         f_name = input("Enter first name: ").strip()
+#         l_name = input("Enter last name: ").strip()
+#         grade = input("Enter grade: ")
+#         print("Enter '0' to exit")
+#         if f_name =="0":
+#             break
+#     st = Student(f_name, l_name, grade)
+#     student.append(st)
+#     totalscore += int(grade)
+#     average = totalscore / len(student)
+#     print(f"{"First":<5} {"Last":<5} {"Grade":<5}")
+#     print(f"{f_name:<5} {l_name:<5} {average[0]:<5}")
+#     s.close()
+# main()
+
+
+
+
+class Employees:
+
+    number_of_employees = 0
+
+    def __init__(self, name, hourly_rate, hours_worked):
+        self.name = name
+        self.hourly_rate = hourly_rate
+        self.hours_worked = hours_worked
+        Employees.number_of_employees += 1
+
+
+
+    def __str__(self):
+        return (f"Payroll report for {self.name}\n"
+                f"Hours = {self.hourly_rate}\n"
+                f"Rate = {self.hourly_rate}\n"
+                f"Total Gross = {total_hours_worked()}\n")
+
+
+
+    def get_name(self):
+        return self.name
+
+    def get_hourly_rate(self):
+        return self.hourly_rate
+
+    def get_hours_worked(self):
+        return self.hours_worked
+
+
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_hourly_rate(self, hourly_rate):
+        self.hourly_rate = hourly_rate
+
+    def set_hours_worked(self, hours_worked):
+        self.hours_worked = hours_worked
+
+
+
+    def add_hours_worked(self, hours_worked):
+        self.hours_worked += hours_worked
+
+    def calc_total_hours_worked(self):
+        hours_worked * hourly_rate = total_hours_worked
+
+
+e = Employees("Sara", 15, 40)
+e2 = Employees("Harvey", 11.20, 15)
+print(e)
+print(e2)
