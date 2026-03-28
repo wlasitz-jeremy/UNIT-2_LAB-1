@@ -648,56 +648,56 @@ from xml.sax.handler import property_lexical_handler
 
 
 
-class Employees:
-
-    number_of_employees = 0
-
-    def __init__(self, name, hourly_rate, hours_worked):
-        self.name = name
-        self.hourly_rate = hourly_rate
-        self.hours_worked = hours_worked
-        Employees.number_of_employees += 1
-
-
-
-    def __str__(self):
-        return (f"Payroll report for {self.name}\n"
-                f"Hours = {self.hourly_rate}\n"
-                f"Rate = {self.hourly_rate}\n"
-                f"Total Gross = {total_hours_worked()}\n")
-
-
-
-    def get_name(self):
-        return self.name
-
-    def get_hourly_rate(self):
-        return self.hourly_rate
-
-    def get_hours_worked(self):
-        return self.hours_worked
-
-
-
-    def set_name(self, name):
-        self.name = name
-
-    def set_hourly_rate(self, hourly_rate):
-        self.hourly_rate = hourly_rate
-
-    def set_hours_worked(self, hours_worked):
-        self.hours_worked = hours_worked
-
-
-
-    def add_hours_worked(self, hours_worked):
-        self.hours_worked += hours_worked
-
-    def calc_total_hours_worked(self):
-        hours_worked * hourly_rate = total_hours_worked
-
-
-e = Employees("Sara", 15, 40)
-e2 = Employees("Harvey", 11.20, 15)
-print(e)
-print(e2)
+# class Employees:
+#
+#     number_of_employees = 0
+#
+#     def __init__(self, name, hourly_rate, hours_worked):
+#         self.name = name
+#         self.hourly_rate = hourly_rate
+#         self.hours_worked = hours_worked
+#         Employees.number_of_employees += 1
+#
+#
+#
+#     def __str__(self):
+#         return (f"Payroll report for {self.name}\n"
+#                 f"Hours = {self.hourly_rate}\n"
+#                 f"Rate = {self.hourly_rate}\n"
+#                 f"Total Gross = {total_hours_worked()}\n")
+#
+#
+#
+#     def get_name(self):
+#         return self.name
+#
+#     def get_hourly_rate(self):
+#         return self.hourly_rate
+#
+#     def get_hours_worked(self):
+#         return self.hours_worked
+#
+#
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def set_hourly_rate(self, hourly_rate):
+#         self.hourly_rate = hourly_rate
+#
+#     def set_hours_worked(self, hours_worked):
+#         self.hours_worked = hours_worked
+#
+#
+#
+#     def add_hours_worked(self, hours_worked):
+#         self.hours_worked += hours_worked
+#
+#     def calc_total_hours_worked(self):
+#         hours_worked * hourly_rate = total_hours_worked
+#
+#
+# e = Employees("Sara", 15, 40)
+# e2 = Employees("Harvey", 11.20, 15)
+# print(e)
+# print(e2)
