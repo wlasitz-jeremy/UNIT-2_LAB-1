@@ -52,9 +52,9 @@ class HotelBookingSystem:
 
 
     def add_booking(self):
-        room = int(input("Room (101/102/201): "))
+        room = int(input("Room (101/102/201): ").strip())
         day = input("Day (Monday-Saturday): ").strip().title()
-        hour = int(input("Hour (9-17): "))
+        hour = int(input("Hour (9-17): ").strip())
         guest = input("Guest name: ").strip().title()
 
         if room not in ROOMS or day not in VALID_DAYS or hour not in VALID_HOURS or guest == "":
@@ -119,9 +119,9 @@ class HotelBookingSystem:
             print("No booking found.")
 
     def cancel_booking(self):
-        room = int(input("Room: "))
+        room = int(input("Room: ").strip())
         day = input("Day: ").strip().title()
-        hour = int(input("Hour: "))
+        hour = int(input("Hour: ").strip())
 
         for b in self.bookings:
             if b["Room"] == room and b["Day"] == day and b["Hour"] == hour:
@@ -131,14 +131,16 @@ class HotelBookingSystem:
 
         print("No booking found.")
 
+
+
     def change_booking(self):
         guest = input("Guest name: ").strip().title()
 
         for b in self.bookings:
             if b["Guest"].title() == guest:
-                new_room = int(input("New room: "))
+                new_room = int(input("New room: ").strip())
                 new_day = input("New day: ").strip().title()
-                new_hour = int(input("New hour: "))
+                new_hour = int(input("New hour: ").strip())
 
                 if new_room not in ROOMS or new_day not in VALID_DAYS or new_hour not in VALID_HOURS:
                     print("Could not change booking.")
@@ -159,6 +161,7 @@ class HotelBookingSystem:
 
     def main(self):
         while True:
+            print()
             print("Simple Hotel Booking")
             print("1) Add booking")
             print("2) Show day calendar")
@@ -167,7 +170,7 @@ class HotelBookingSystem:
             print("5) Change booking")
             print("6) Exit")
 
-            option = input("Select option: ")
+            option = input("Select option: ").strip()
 
             if option == "1":
                 self.add_booking()
@@ -185,6 +188,5 @@ class HotelBookingSystem:
                 break
             else:
                 print("Invalid option.")
-
 
 HotelBookingSystem().main()
