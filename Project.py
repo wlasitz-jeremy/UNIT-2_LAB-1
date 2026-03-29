@@ -77,17 +77,32 @@ class HotelBookingSystem:
 
 
     def show_day_calendar(self):
-        day = input("Day (Monday-Saturday): ").strip().title()
+        day = input("Day: ").strip().title()
+        print()
         print(f"=== {day} Calendar ===")
 
+        # Header
+        header = f"{'Time':<15}"
+        for room in ROOMS:
+            header += f"{room:<18}"
+        print(header)
+
+        # Rows
         for hour in VALID_HOURS:
+            row = f"{hour}:00".ljust(15)
+
             for room in ROOMS:
                 guest = "empty"
                 for b in self.bookings:
-                    if b["Day"] == day and b["Room"] == room and b["Hour"] == hour:
+                    if (
+                            b["Day"] == day
+                            and b["Room"] == room
+                            and b["Hour"] == hour
+                    ):
                         guest = b["Guest"]
-                print(f"{hour}:00 Room {room}: {guest}")
-            print()
+                row += f"{guest:<18}"
+
+            print(row)
 
 
 
