@@ -1,7 +1,6 @@
 import os
 
 
-
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 VALID_HOURS = range(9, 18)
 ROOMS = [101, 102, 201]
