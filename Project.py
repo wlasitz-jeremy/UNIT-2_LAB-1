@@ -1,9 +1,12 @@
 import os
 
+
+
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 VALID_HOURS = range(9, 18)
 ROOMS = [101, 102, 201]
 FILE_NAME = "hotel_bookings.csv"
+
 
 
 class HotelBookingSystem:
@@ -11,7 +14,8 @@ class HotelBookingSystem:
         self.bookings = []
         self.load_bookings()
 
-    # ---------- File Handling ----------
+
+
     def load_bookings(self):
         if not os.path.exists(FILE_NAME):
             f = open(FILE_NAME, "w")
@@ -35,6 +39,8 @@ class HotelBookingSystem:
                 "Guest": parts[3]
             })
 
+
+
     def save_bookings(self):
         f = open(FILE_NAME, "w")
         f.write("Day,Room,Hour,Guest\n")
@@ -43,12 +49,13 @@ class HotelBookingSystem:
             f.write(line)
         f.close()
 
-    # ---------- Features ----------
+
+
     def add_booking(self):
-        room = int(input("Room: "))
-        day = input("Day: ").strip().capitalize()
-        hour = int(input("Hour: "))
-        guest = input("Guest: ").strip()
+        room = int(input("Room (101/102/201): "))
+        day = input("Day (Monday-Saturday): ").strip().capitalize()
+        hour = int(input("Hour (9-17): "))
+        guest = input("Guest name: ").strip()
 
         if room not in ROOMS or day not in VALID_DAYS or hour not in VALID_HOURS or guest == "":
             print("Could not add booking.")
@@ -67,18 +74,22 @@ class HotelBookingSystem:
         })
         print("Booking added.")
 
+
+
     def show_day_calendar(self):
-        day = input("Day: ").strip().capitalize()
+        day = input("Day (Monday-Saturday): ").strip().title()
         print(f"=== {day} Calendar ===")
 
         for hour in VALID_HOURS:
             for room in ROOMS:
-                guest = "Free"
+                guest = "empty"
                 for b in self.bookings:
                     if b["Day"] == day and b["Room"] == room and b["Hour"] == hour:
                         guest = b["Guest"]
                 print(f"{hour}:00 Room {room}: {guest}")
             print()
+
+
 
     def find_booking(self):
         guest = input("Guest name: ").strip().lower()
@@ -131,12 +142,12 @@ class HotelBookingSystem:
 
         print("No booking found.")
 
-    # ---------- Menu ----------
-    def run(self):
+    def main(self):
         while True:
-            print("\n1) Add booking")
+            print("Simple Hotel Booking")
+            print("1) Add booking")
             print("2) Show day calendar")
-            print("3) Find booking")
+            print("3) Find booking by guest")
             print("4) Cancel booking")
             print("5) Change booking")
             print("6) Exit")
@@ -161,4 +172,4 @@ class HotelBookingSystem:
                 print("Invalid option.")
 
 
-HotelBookingSystem().run()
+HotelBookingSystem().main()
