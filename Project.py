@@ -16,11 +16,9 @@ class HotelBookingSystem:
 
 
     def load_bookings(self):
-        if not os.path.exists(FILE_NAME):
-            f = open(FILE_NAME, "w")
-            f.write("Day,Room,Hour,Guest\n")
-            f.close()
-            return
+        f = open(FILE_NAME, "w")
+        f.write("Day,Room,Hour,Guest\n")
+        f.close()
 
         f = open(FILE_NAME, "r")
         lines = f.readlines()
@@ -76,7 +74,7 @@ class HotelBookingSystem:
 
 
     def show_day_calendar(self):
-        day = input("Day: ").strip().title()
+        day = input("Day (Monday-Saturday): ").strip().title()
         print()
         print(f"=== {day} Calendar ===")
 
