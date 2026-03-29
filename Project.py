@@ -53,9 +53,9 @@ class HotelBookingSystem:
 
     def add_booking(self):
         room = int(input("Room (101/102/201): "))
-        day = input("Day (Monday-Saturday): ").strip().capitalize()
+        day = input("Day (Monday-Saturday): ").strip().title()
         hour = int(input("Hour (9-17): "))
-        guest = input("Guest name: ").strip()
+        guest = input("Guest name: ").strip().title()
 
         if room not in ROOMS or day not in VALID_DAYS or hour not in VALID_HOURS or guest == "":
             print("Could not add booking.")
@@ -107,11 +107,11 @@ class HotelBookingSystem:
 
 
     def find_booking(self):
-        guest = input("Guest name: ").strip().lower()
+        guest = input("Guest name: ").strip().title()
         found = False
 
         for b in self.bookings:
-            if b["Guest"].lower() == guest:
+            if b["Guest"].title() == guest:
                 print(f"Found: {b['Guest']} in room {b['Room']} on {b['Day']} at {b['Hour']}:00")
                 found = True
 
@@ -120,7 +120,7 @@ class HotelBookingSystem:
 
     def cancel_booking(self):
         room = int(input("Room: "))
-        day = input("Day: ").strip().capitalize()
+        day = input("Day: ").strip().title()
         hour = int(input("Hour: "))
 
         for b in self.bookings:
@@ -132,12 +132,12 @@ class HotelBookingSystem:
         print("No booking found.")
 
     def change_booking(self):
-        guest = input("Guest name: ").strip().lower()
+        guest = input("Guest name: ").strip().title()
 
         for b in self.bookings:
-            if b["Guest"].lower() == guest:
+            if b["Guest"].title() == guest:
                 new_room = int(input("New room: "))
-                new_day = input("New day: ").strip().capitalize()
+                new_day = input("New day: ").strip().title()
                 new_hour = int(input("New hour: "))
 
                 if new_room not in ROOMS or new_day not in VALID_DAYS or new_hour not in VALID_HOURS:
