@@ -1,24 +1,28 @@
 import os
 
-
 VALID_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 VALID_HOURS = range(9, 18)
 ROOMS = [101, 102, 201]
 FILE_NAME = "hotel_bookings.csv"
 
+
 class HotelBookingSystem:
+
     def __init__(self):
         self.bookings = []
         self.load_bookings(FILE_NAME)
+
 
 
     def normalize_day(self, day):
         return day.strip().title()
 
 
+
     def slot_key(self, day, room, hour):
         day = self.normalize_day(day)
         return day, room, hour
+
 
 
     def load_bookings(self, FILE_NAME):
@@ -30,12 +34,14 @@ class HotelBookingSystem:
         return self.bookings
 
 
+
     def save_bookings(self):
         b = open(FILE_NAME, "w")
         for booking in self.bookings:
             line = ",".join(booking)
             b.write(line + "\n")
         b.close()
+
 
 
     def add_booking(self):
@@ -56,10 +62,12 @@ class HotelBookingSystem:
         print("Booking added.")
 
 
+
     def print_day_calendar(self, day):
         day = self.normalize_day(day)
         print()
         print(f"=== {day} Calender ===")
+
 
 
     def find_booking(self):
@@ -72,6 +80,7 @@ class HotelBookingSystem:
         if not found:
             print("No booking found.")
 
+
     def cancel_booking(self):
         room = int(input("Room (101/102/201): ").strip())
         day = self.normalize_day(input("Day (Monday-Saturday): "))
@@ -82,6 +91,8 @@ class HotelBookingSystem:
                 self.bookings.remove(b)
                 print("Booking cancelled.")
         print("No booking found.")
+
+
 
     def change_booking(self):
         guest = input("Guest name: ").strip().title()
@@ -112,6 +123,7 @@ class HotelBookingSystem:
         print("No booking found.")
 
 
+
     def main(self):
         while True:
             print()
@@ -139,6 +151,5 @@ class HotelBookingSystem:
                 break
             else:
                 print("Invalid option.")
-
 
 HotelBookingSystem().main()
