@@ -9,7 +9,7 @@ FILE_NAME = "hotel_bookings.csv"
 class HotelBookingSystem:
     def __init__(self):
         self.bookings = []
-        self.load_bookings()
+        self.load_bookings(FILE_NAME)
 
 
     def normalize_day(self, day):
@@ -21,16 +21,39 @@ class HotelBookingSystem:
         return day, room, hour
 
 
-    def load_bookings(self):
-        pass
+    def load_bookings(self, FILE_NAME):
+        b = open(FILE_NAME, "r")
+        content = b.readlines()
+        b.close()
+        for row in content:
+            items = row.strip().split(",")
+        return self.bookings
 
 
     def save_bookings(self):
-        pass
+        b = open(FILE_NAME, "w")
+        for booking in self.bookings:
+            line = ",".join(booking)
+            b.write(line + "\n")
+        b.close()
 
 
     def add_booking(self):
-        pass
+        room = int(input("Room (101/102/201): ").strip())
+        day = self.normalize_day(input("Day (Monday-Saturday): "))
+        hour = int(input("Hour (9-17): ").strip())
+        guest = input("Guest name: ").strip().title()
+
+        if room not in ROOMS or day not in VALID_DAYS or hour not in VALID_HOURS or guest == "":
+            print("Could not add booking.")
+            return
+        new_key = self.slot_key(day, room, hour)
+        for b in self.bookings:
+            if self.slot_key(b["day"], b["room"], b["hour"]) == new_key:
+                print("Could not add booking.")
+                return
+        self.bookings.append({"Day":day, "Room":room, "Hour":hour, "Guest":guest})
+        print("Booking added.")
 
 
     def print_day_calendar(self):
