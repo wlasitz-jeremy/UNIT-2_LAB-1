@@ -13,13 +13,14 @@ class HotelBookingSystem:
         self.load_bookings(FILE_NAME)
 
 
-    def normalize_day(self, day):
+    @staticmethod
+    def normalize_day(day):
         return day.strip().title()
 
 
-    def slot_key(self, Day, Room, Hour):
-        day = self.normalize_day(Day)
-        return Day, Room, Hour
+    def slot_key(self, day, room, hour):
+        day = self.normalize_day(day)
+        return day, room, hour
 
 
     def load_bookings(self, FILE_NAME):
