@@ -8,6 +8,7 @@ FILE_NAME = "hotel_bookings.csv"
 
 class HotelBookingSystem:
 
+
     def __init__(self):
         self.bookings = []
         self.load_bookings(FILE_NAME)
