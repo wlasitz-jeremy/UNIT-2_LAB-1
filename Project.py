@@ -56,20 +56,60 @@ class HotelBookingSystem:
         print("Booking added.")
 
 
-    def print_day_calendar(self):
-        pass
+    def print_day_calendar(self, day):
+        day = self.normalize_day(day)
+        print()
+        print(f"=== {day} Calender ===")
 
 
     def find_booking(self):
-        pass
-
+        guest = input("Guest name: ").strip().title()
+        found = False
+        for b in self.bookings:
+            if b["Guest"] == guest:
+                found = True
+                print(f"{b['Guest']}in room {b['Room']} on {b['Day']} at {b['Hour']}:00")
+        if not found:
+            print("No booking found.")
 
     def cancel_booking(self):
-        pass
-
+        room = int(input("Room (101/102/201): ").strip())
+        day = self.normalize_day(input("Day (Monday-Saturday): "))
+        hour = int(input("Hour (9-17): ").strip())
+        target_booking = self.slot_key(day, room, hour)
+        for b in self.bookings:
+            if self.slot_key(b["Room"], b["Day"], b["Hour"]) == target_booking :
+                self.bookings.remove(b)
+                print("Booking cancelled.")
+        print("No booking found.")
 
     def change_booking(self):
-       pass
+        guest = input("Guest name: ").strip().title()
+
+        for b in self.bookings:
+            if b["Guest"].title() == guest:
+                new_room = int(input("New room: ").strip())
+                new_day = self.normalize_day(input("New day: "))
+                new_hour = int(input("New hour: ").strip())
+
+                if new_room not in ROOMS or new_day not in VALID_DAYS or new_hour not in VALID_HOURS:
+                    print("Could not change booking.")
+                    return
+
+                new_booking = self.slot_key(new_day, new_room, new_hour)
+
+                for nb in self.bookings:
+                    if self.slot_key(nb["Day"], nb["Room"], nb["Hour"]) == new_booking:
+                        print("Could not change booking.")
+                        return
+
+                b["Room"] = new_room
+                b["Day"] = new_day
+                b["Hour"] = new_hour
+                print("Booking changed.")
+                return
+
+        print("No booking found.")
 
 
     def main(self):
