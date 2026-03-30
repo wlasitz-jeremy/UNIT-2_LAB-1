@@ -113,6 +113,7 @@ class HotelBookingSystem:
 
         print("No booking found.")
 
+
     def change_booking(self):
         guest = input("Guest name: ").strip().title()
 
