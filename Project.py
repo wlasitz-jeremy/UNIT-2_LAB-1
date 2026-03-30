@@ -78,7 +78,7 @@ class HotelBookingSystem:
         for b in self.bookings:
             if b["Day"] == day:
                 time = f"{b['Hour']}:00"
-                room = str(b["Room"])
+                room = b["Room"]
                 calendar[time][room] = b["Guest"]
 
         print()
