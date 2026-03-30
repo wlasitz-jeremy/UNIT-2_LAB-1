@@ -43,6 +43,7 @@ class HotelBookingSystem:
         b.close()
         print("Saved. Goodbye.")
 
+
     def add_booking(self):
         room = int(input("Room (101/102/201): ").strip())
         day = self.normalize_day(input("Day (Monday-Saturday): "))
