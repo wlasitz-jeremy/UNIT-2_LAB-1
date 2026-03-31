@@ -29,11 +29,19 @@ class HotelBookingSystem:
         content = b.readlines()
         b.close()
         for row in content:
+
+            if row.strip() == "":
+                continue
+
             day, room, hour, guest = row.strip().split(",")
+
+            if day == "Day":
+                continue
+
             self.bookings.append({
                 "Day": day,
-                "Room": room,
-                "Hour": hour,
+                "Room": int(room),
+                "Hour": int(hour),
                 "Guest": guest})
 
 
@@ -104,11 +112,14 @@ class HotelBookingSystem:
         day = self.normalize_day(input("Day (Monday-Saturday): "))
         hour = int(input("Hour (9-17): ").strip())
 
-        for b in self.bookings:
+        i = 0
+        while i < len(self.bookings):
+            b = self.bookings[i]
             if b["Room"] == room and b["Day"] == day and b["Hour"] == hour:
-                self.bookings.remove(b)
+                self.bookings.pop(i)
                 print("Booking cancelled.")
                 return
+            i += 1
 
         print("No booking found.")
 
