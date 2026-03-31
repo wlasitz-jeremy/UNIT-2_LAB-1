@@ -69,11 +69,7 @@ class HotelBookingSystem:
         times = [f"{h}:00" for h in range(9, 18)]
         rooms = ["101", "102", "201"]
 
-        calendar = {}
-        for time in times:
-            calendar[time] = {}
-            for room in rooms:
-                calendar[time][room] = "empty"
+        calendar = {time:{room: "empty" for room in rooms}for time in times}
 
         for b in self.bookings:
             if b["Day"] == day:
