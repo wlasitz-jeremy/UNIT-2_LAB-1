@@ -25,19 +25,17 @@ class HotelBookingSystem:
 
 
     def load_bookings(self, FILE_NAME):
+        if not os.path.exists(FILE_NAME):
+            return
         b = open(FILE_NAME, "r")
         content = b.readlines()
         b.close()
         for row in content:
-
             if row.strip() == "":
                 continue
-
             day, room, hour, guest = row.strip().split(",")
-
             if day == "Day":
                 continue
-
             self.bookings.append({
                 "Day": day,
                 "Room": int(room),
@@ -47,6 +45,7 @@ class HotelBookingSystem:
 
     def save_bookings(self):
         b = open(FILE_NAME, "w")
+        b.write("Day,Room,Hour,Guest\n")
         for booking in self.bookings:
             line = f"{booking['Day']},{booking['Room']},{booking['Hour']},{booking['Guest']}"
             b.write(line + "\n")
@@ -59,7 +58,6 @@ class HotelBookingSystem:
         day = self.normalize_day(input("Day (Monday-Saturday): "))
         hour = int(input("Hour (9-17): ").strip())
         guest = input("Guest name: ").strip().title()
-
         if room not in ROOMS or day not in VALID_DAYS or hour not in VALID_HOURS or guest == "":
             print("Could not add booking.")
             return
@@ -76,19 +74,15 @@ class HotelBookingSystem:
         day = self.normalize_day(day)
         times = [f"{h}:00" for h in range(9, 18)]
         rooms = ["101", "102", "201"]
-
         calendar = {time:{room: "empty" for room in rooms}for time in times}
-
         for b in self.bookings:
             if b["Day"] == day:
                 time = f"{b['Hour']}:00"
                 room = str(b["Room"])
                 calendar[time][room] = b["Guest"]
-
         print()
         print(f"=== {day} Calender ===")
         print(f"{'Time':<15}{'101':<18}{'102':<18}{'201':<18}")
-
         for time in times:
             print(f"{time:<15}"
                   f"{calendar[time]['101']:<18}"
@@ -111,7 +105,6 @@ class HotelBookingSystem:
         room = int(input("Room (101/102/201): ").strip())
         day = self.normalize_day(input("Day (Monday-Saturday): "))
         hour = int(input("Hour (9-17): ").strip())
-
         i = 0
         while i < len(self.bookings):
             b = self.bookings[i]
@@ -120,36 +113,31 @@ class HotelBookingSystem:
                 print("Booking cancelled.")
                 return
             i += 1
-
         print("No booking found.")
 
 
     def change_booking(self):
         guest = input("Guest name: ").strip().title()
-
         for b in self.bookings:
             if b["Guest"].title() == guest:
                 new_room = int(input("New room: ").strip())
                 new_day = self.normalize_day(input("New day: "))
                 new_hour = int(input("New hour: ").strip())
-
                 if new_room not in ROOMS or new_day not in VALID_DAYS or new_hour not in VALID_HOURS:
                     print("Could not change booking.")
                     return
-
                 new_booking = self.slot_key(new_day, new_room, new_hour)
-
                 for nb in self.bookings:
+                    if nb ==b:
+                        continue
                     if self.slot_key(nb["Day"], nb["Room"], nb["Hour"]) == new_booking:
                         print("Could not change booking.")
                         return
-
                 b["Room"] = new_room
                 b["Day"] = new_day
                 b["Hour"] = new_hour
                 print("Booking changed.")
                 return
-
         print("No booking found.")
 
 
