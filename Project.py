@@ -139,16 +139,16 @@ class HotelBookingSystem:
         room = int(input("Room (101/102/201): ").strip())
         day = self.normalize_day(input("Day (Monday-Saturday): "))
         hour = int(input("Hour (9-17): ").strip())
-        i = 0
+        row = 0
         # loops until booking is found and match inputs
-        while i < len(self.bookings):
-            b = self.bookings[i]
+        while row < len(self.bookings):
+            b = self.bookings[row]
             if b["Room"] == room and b["Day"] == day and b["Hour"] == hour:
                 # removes booking from file
-                self.bookings.pop(i)
+                self.bookings.pop(row)
                 print("Booking cancelled.")
                 return
-            i += 1
+            row += 1
         # if no booking found prints not found
         print("No booking found.")
 
