@@ -198,6 +198,7 @@ class HotelBookingSystem:
                   "5) Change booking\n"
                   "6) Exit")
             option = input("Select option: ").strip()
+            # loops through options until "6" is chosen then breaks loop
             if option == "1":
                 self.add_booking()
             elif option == "2":
