@@ -701,3 +701,38 @@ from xml.sax.handler import property_lexical_handler
 # e2 = Employees("Harvey", 11.20, 15)
 # print(e)
 # print(e2)
+
+
+
+
+# import math
+# class RegularPolygon:
+#
+#     number_of_polygons = 0
+#
+#     def __init__(self, n, sides):
+#         self.n = n
+#         self.sides = sides
+#         RegularPolygon.number_of_polygons += 1
+#
+#     def area(self):
+#         return (self.n*(self.sides ** 2)) / (4 * math.tan(math.pi / self.n))
+#
+#
+#
+#     def perimeter (self):
+#         return self.n * self.sides
+#
+#     def __str__(self):
+#         return f"Polygon #1: {self.n} sides of length {self.sides}"
+#
+#
+# first_polygon = RegularPolygon(3, 1.5)
+# second_polygon = RegularPolygon(6, 4.0)
+# print(f"Polygon #1: {first_polygon}\n"
+#         f"    Area: {round(first_polygon.area(), 1)}\n"
+#         f"    Perimeter: {round(first_polygon.perimeter(), 1)}\n\n"
+#         f"Polygon #2: {second_polygon}\n"
+#         f"    Area: {round(second_polygon.area(), 1)}\n"
+#         f"    Perimeter: {round(second_polygon.perimeter(), 1)}\n\n"
+#         f"Number of Regular Polygons created: {RegularPolygon.number_of_polygons}\n")
