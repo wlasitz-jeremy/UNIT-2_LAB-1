@@ -14,6 +14,19 @@ class HotelBookingSystem:
         self.load_bookings(FILE_NAME)
 
 
+    def __str__(self):
+        # if csv file doesn't exist prints no loaded bookings
+        if not self.bookings:
+            return "Hotel Booking System (no bookings loaded)."
+        # formats csv file properly
+        lines = ["Day,Room,Hour,Guest"]
+        for b in self.bookings:
+            lines.append(
+                f"{b['Day']},{b['Room']},{b['Hour']},{b['Guest']}"
+            )
+        return "\n".join(lines)
+
+
     @staticmethod
     def normalize_day(day):
         # removes white spaces and converts to title case
@@ -202,4 +215,5 @@ class HotelBookingSystem:
             else:
                 print("Invalid option.")
 
-HotelBookingSystem().main()
+HBS = HotelBookingSystem()
+HBS.main()
