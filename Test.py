@@ -715,13 +715,14 @@ from xml.sax.handler import property_lexical_handler
 #         self.sides = sides
 #         RegularPolygon.number_of_polygons += 1
 #
+#
 #     def area(self):
 #         return (self.n*(self.sides ** 2)) / (4 * math.tan(math.pi / self.n))
 #
 #
-#
 #     def perimeter (self):
 #         return self.n * self.sides
+#
 #
 #     def __str__(self):
 #         return f"Polygon #1: {self.n} sides of length {self.sides}"
@@ -736,3 +737,7 @@ from xml.sax.handler import property_lexical_handler
 #         f"    Area: {round(second_polygon.area(), 1)}\n"
 #         f"    Perimeter: {round(second_polygon.perimeter(), 1)}\n\n"
 #         f"Number of Regular Polygons created: {RegularPolygon.number_of_polygons}\n")
+
+
+
+
