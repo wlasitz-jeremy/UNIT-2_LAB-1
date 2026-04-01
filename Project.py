@@ -190,13 +190,13 @@ class HotelBookingSystem:
             # loops until "6" is entered breaking the loop and saving the program
             print()
             # prints options of program
-            print("Simple Hotel Booking")
-            print("1) Add booking")
-            print("2) Show day calendar")
-            print("3) Find booking by guest")
-            print("4) Cancel booking")
-            print("5) Change booking")
-            print("6) Exit")
+            print("Simple Hotel Booking\n"
+                  "1) Add booking\n"
+                  "2) Show day calendar\n"
+                  "3) Find booking by guest"
+                  "4) Cancel booking\n"
+                  "5) Change booking\n"
+                  "6) Exit")
             option = input("Select option: ").strip()
             if option == "1":
                 self.add_booking()
